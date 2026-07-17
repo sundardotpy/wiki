@@ -9,15 +9,6 @@
   },
   "favicon": "/favicon.svg",
   "navigation": {
-    "pages": [
-      {
-        "group": "Getting Started",
-        "pages": [
-          "index",
-          "quickstart"
-        ]
-      }
-    ],
     "groups": [
       {
         "group": "Getting Started",
@@ -27,14 +18,215 @@
         ]
       },
       {
-        "group": "Products",
+        "group": "Product SOP and FAQ",
         "pages": [
+          {
+            "group": "Bonds",
+            "pages": [
+              "product-sop-faq/bonds",
+              "product-sop-faq/bonds/accrued-interest",
+              "product-sop-faq/bonds/pricing",
+              "product-sop-faq/bonds/record-date",
+              "product-sop-faq/bonds/taxation",
+              "product-sop-faq/bonds/ytm"
+            ]
+          },
+          {
+            "group": "Flexi",
+            "pages": [
+              "product-sop-faq/flexi",
+              "product-sop-faq/flexi/flexi-tenure-bond",
+              "product-sop-faq/flexi/what-happends-if-ddpi-note-signed-in-flexi-tenure-bonds"
+            ]
+          },
+          {
+            "group": "Liquidity",
+            "pages": [
+              "product-sop-faq/liquidity",
+              "product-sop-faq/liquidity/how-to-check-user-signed-ddpi",
+              "product-sop-faq/liquidity/what-to-do-when-finder-shows-ddpi-initiated-but-user-saying-it-showed-an-error"
+            ]
+          },
+          {
+            "group": "MLD",
+            "pages": [
+              "product-sop-faq/mld",
+              "product-sop-faq/mld/mld-faq",
+              "product-sop-faq/mld/what-is-mld"
+            ]
+          },
+          {
+            "group": "Reports - Wint Wealth",
+            "pages": [
+              "product-sop-faq/reports-wint-wealth",
+              "product-sop-faq/reports-wint-wealth/current-holdings",
+              "product-sop-faq/reports-wint-wealth/future-cashflows",
+              "product-sop-faq/reports-wint-wealth/holding-statement",
+              "product-sop-faq/reports-wint-wealth/investment-transactions",
+              "product-sop-faq/reports-wint-wealth/master-report",
+              "product-sop-faq/reports-wint-wealth/repayments-received",
+              "product-sop-faq/reports-wint-wealth/sell-transactions",
+              "product-sop-faq/reports-wint-wealth/taxation-report",
+              "product-sop-faq/reports-wint-wealth/user-requirement-and-reports-that-satisfy-it"
+            ]
+          },
           {
             "group": "SIP",
             "pages": [
-              "sip-faq"
+              "product-sop-faq/sip",
+              "product-sop-faq/sip/bond-sip",
+              "product-sop-faq/sip/sip-cancellation",
+              "product-sop-faq/sip/sip-modification",
+              "product-sop-faq/sip/sip-skip-installment"
             ]
-          }
+          },
+          {
+            "group": "Wint Account",
+            "pages": [
+              "product-sop-faq/wint-account",
+              "product-sop-faq/wint-account/account-deletion",
+              "product-sop-faq/wint-account/display-name",
+              "product-sop-faq/wint-account/display-picture",
+              "product-sop-faq/wint-account/login-and-otp"
+            ]
+          },
+          "product-sop-faq/aif",
+          "product-sop-faq/family-account",
+          "product-sop-faq/fd",
+          "product-sop-faq/form-121",
+          "product-sop-faq/ivory",
+          "product-sop-faq/nsdl-demat",
+          "product-sop-faq/pms",
+          "product-sop-faq/ptc",
+          "product-sop-faq/referral",
+          "product-sop-faq/reports-nsdl",
+          "product-sop-faq/sgbs",
+          "product-sop-faq/wint-portfolio-dashboard"
+        ]
+      },
+      {
+        "group": "Process SOP and FAQ",
+        "pages": [
+          {
+            "group": "Bond Transfer",
+            "pages": [
+              "process-sop-faq/bond-transfer",
+              "process-sop-faq/bond-transfer/faq",
+              "process-sop-faq/bond-transfer/nsdl-to-cdsl",
+              "process-sop-faq/bond-transfer/nsdl-to-nsdl"
+            ]
+          },
+          {
+            "group": "HUF",
+            "pages": [
+              "process-sop-faq/huf",
+              "process-sop-faq/huf/huf-onboarding",
+              "process-sop-faq/huf/huf-referral-and-limitations"
+            ]
+          },
+          "process-sop-faq/aml-sop",
+          "process-sop-faq/call-sop",
+          "process-sop-faq/chat-sop",
+          "process-sop-faq/demat-closure",
+          "process-sop-faq/email-sop",
+          "process-sop-faq/handling-escalation",
+          "process-sop-faq/kyc-modification",
+          "process-sop-faq/ncl-refund",
+          "process-sop-faq/nominee-claim",
+          "process-sop-faq/orm-sop",
+          "process-sop-faq/repayment",
+          "process-sop-faq/slack-channels",
+          "process-sop-faq/tds"
+        ]
+      },
+      {
+        "group": "Tools and systems",
+        "pages": [
+          {
+            "group": "Clevertap",
+            "pages": [
+              "tools-and-systems/clevertap",
+              "tools-and-systems/clevertap/how-to-know-user-subscribed-to-comms"
+            ]
+          },
+          {
+            "group": "Finder",
+            "pages": [
+              "tools-and-systems/finder",
+              {
+                "group": "How to check Sell order details",
+                "pages": [
+                  "tools-and-systems/finder/how-to-check-sell-order-details",
+                  "tools-and-systems/finder/how-to-check-sell-order-details/what-to-do-when-finder-shows-ddpi-initiated-but-user-is-saying-it-showed-an-error"
+                ]
+              },
+              "tools-and-systems/finder/how-to-check-buy-order-details",
+              "tools-and-systems/finder/how-to-check-family-account-details",
+              "tools-and-systems/finder/how-to-check-form-121-submission-details-and-download-it",
+              "tools-and-systems/finder/how-to-check-if-account-is-deleted",
+              "tools-and-systems/finder/how-to-check-if-referral-is-added-and-referral-payout-details",
+              "tools-and-systems/finder/how-to-check-repayment-details"
+            ]
+          },
+          {
+            "group": "Mixpanel",
+            "pages": [
+              "tools-and-systems/mixpanel",
+              "tools-and-systems/mixpanel/how-to-check-why-referee-not-mapped",
+              "tools-and-systems/mixpanel/how-to-find-a-user-without-phone-number-using-mixpanel"
+            ]
+          },
+          {
+            "group": "Payment Gateway",
+            "pages": [
+              "tools-and-systems/payment-gateway",
+              {
+                "group": "Cashfree",
+                "pages": [
+                  "tools-and-systems/payment-gateway/cashfree",
+                  "tools-and-systems/payment-gateway/cashfree/how-to-check-order-failure-cashfree",
+                  "tools-and-systems/payment-gateway/cashfree/how-to-check-sip-autopay-status-on-cashfree"
+                ]
+              },
+              {
+                "group": "Razorpay",
+                "pages": [
+                  "tools-and-systems/payment-gateway/razorpay",
+                  "tools-and-systems/payment-gateway/razorpay/how-to-check-order-failure-status-on-razorpay"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Robylon",
+            "pages": [
+              "tools-and-systems/robylon",
+              "tools-and-systems/robylon/how-to-search-previous-chat-in-robylon",
+              "tools-and-systems/robylon/how-to-search-user-email-in-robylon",
+              "tools-and-systems/robylon/my-robylon-page-not-working"
+            ]
+          },
+          "tools-and-systems/msg91"
+        ]
+      },
+      {
+        "group": "Resources",
+        "pages": [
+          {
+            "group": "CX",
+            "pages": [
+              "resources/cx",
+              "resources/cx/language-sheet",
+              "resources/cx/roaster"
+            ]
+          },
+          "resources/dis-transfer-forms",
+          "resources/form-121-sample",
+          "resources/kyc-modification-forms",
+          "resources/ncl-refund-cases",
+          "resources/nomination-update-forms",
+          "resources/record-date-liquidity-tracker",
+          "resources/transmisson-forms"
         ]
       }
     ]
