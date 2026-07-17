@@ -18,24 +18,25 @@
         ]
       }
     ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    "groups": [
+      {
+        "group": "Getting Started",
+        "pages": [
+          "index",
+          "quickstart"
+        ]
+      },
+      {
+        "group": "Products",
+        "pages": [
+          "sip"
+        ]
+      }
+    ]
   },
   "logo": {
     "light": "/images/icon.png",
-    "dark": "/logo/dark.svg"
+    "dark": "/images/icon.png"
   },
   "navbar": {
     "links": [
