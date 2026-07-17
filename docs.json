@@ -29,7 +29,12 @@
       {
         "group": "Products",
         "pages": [
-          "sip"
+          {
+            "group": "SIP",
+            "pages": [
+              "sip-faq"
+            ]
+          }
         ]
       }
     ]
