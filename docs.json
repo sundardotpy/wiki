@@ -92,6 +92,7 @@
       {
         "group": "Product SOP and FAQ",
         "pages": [
+          "product-sop-faq/products",
           {
             "group": "Bonds",
             "pages": [
@@ -171,15 +172,31 @@
           "product-sop-faq/nsdl-demat",
           "product-sop-faq/pms",
           "product-sop-faq/ptc",
-          "product-sop-faq/referral",
-          "product-sop-faq/reports-nsdl",
+          {
+            "group": "Referral Program",
+            "pages": [
+              "product-sop-faq/referral"
+            ]
+          },
+          {
+            "group": "Reports - NSDL",
+            "pages": [
+              "product-sop-faq/reports-nsdl"
+            ]
+          },
           "product-sop-faq/sgbs",
-          "product-sop-faq/wint-portfolio-dashboard"
+          {
+            "group": "Wint Portfolio DB",
+            "pages": [
+              "product-sop-faq/wint-portfolio-dashboard"
+            ]
+          }
         ]
       },
       {
         "group": "Process SOP and FAQ",
         "pages": [
+          "process-sop-faq/process",
           {
             "group": "Bond Transfer",
             "pages": [
@@ -189,6 +206,7 @@
               "process-sop-faq/bond-transfer/nsdl-to-nsdl"
             ]
           },
+          "process-sop-faq/nominee-claim",
           {
             "group": "HUF",
             "pages": [
@@ -202,14 +220,18 @@
           "process-sop-faq/chat-sop",
           "process-sop-faq/demat-closure",
           "process-sop-faq/email-sop",
-          "process-sop-faq/handling-escalation",
-          "process-sop-faq/kyc-modification",
-          "process-sop-faq/ncl-refund",
-          "process-sop-faq/nominee-claim",
           "process-sop-faq/orm-sop",
+          "process-sop-faq/handling-escalation",
+          {
+            "group": "KYC Modification",
+            "pages": [
+              "process-sop-faq/kyc-modification"
+            ]
+          },
+          "process-sop-faq/ncl-refund",
           "process-sop-faq/repayment",
-          "process-sop-faq/slack-channels",
-          "process-sop-faq/tds"
+          "process-sop-faq/tds",
+          "process-sop-faq/slack-channels"
         ]
       },
       {
