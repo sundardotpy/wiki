@@ -20,6 +20,76 @@
         ]
       },
       {
+        "group": "Tools and systems",
+        "pages": [
+          {
+            "group": "Clevertap",
+            "pages": [
+              "tools-and-systems/clevertap",
+              "tools-and-systems/clevertap/how-to-know-user-subscribed-to-comms"
+            ]
+          },
+          {
+            "group": "Finder",
+            "pages": [
+              "tools-and-systems/finder",
+              {
+                "group": "How to check Sell order details",
+                "pages": [
+                  "tools-and-systems/finder/how-to-check-sell-order-details",
+                  "tools-and-systems/finder/how-to-check-sell-order-details/what-to-do-when-finder-shows-ddpi-initiated-but-user-is-saying-it-showed-an-error"
+                ]
+              },
+              "tools-and-systems/finder/how-to-check-buy-order-details",
+              "tools-and-systems/finder/how-to-check-family-account-details",
+              "tools-and-systems/finder/how-to-check-form-121-submission-details-and-download-it",
+              "tools-and-systems/finder/how-to-check-if-account-is-deleted",
+              "tools-and-systems/finder/how-to-check-if-referral-is-added-and-referral-payout-details",
+              "tools-and-systems/finder/how-to-check-repayment-details"
+            ]
+          },
+          {
+            "group": "Mixpanel",
+            "pages": [
+              "tools-and-systems/mixpanel",
+              "tools-and-systems/mixpanel/how-to-check-why-referee-not-mapped",
+              "tools-and-systems/mixpanel/how-to-find-a-user-without-phone-number-using-mixpanel"
+            ]
+          },
+          {
+            "group": "Payment Gateway",
+            "pages": [
+              "tools-and-systems/payment-gateway",
+              {
+                "group": "Cashfree",
+                "pages": [
+                  "tools-and-systems/payment-gateway/cashfree",
+                  "tools-and-systems/payment-gateway/cashfree/how-to-check-order-failure-cashfree",
+                  "tools-and-systems/payment-gateway/cashfree/how-to-check-sip-autopay-status-on-cashfree"
+                ]
+              },
+              {
+                "group": "Razorpay",
+                "pages": [
+                  "tools-and-systems/payment-gateway/razorpay",
+                  "tools-and-systems/payment-gateway/razorpay/how-to-check-order-failure-status-on-razorpay"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Robylon",
+            "pages": [
+              "tools-and-systems/robylon",
+              "tools-and-systems/robylon/how-to-search-previous-chat-in-robylon",
+              "tools-and-systems/robylon/how-to-search-user-email-in-robylon",
+              "tools-and-systems/robylon/my-robylon-page-not-working"
+            ]
+          },
+          "tools-and-systems/msg91"
+        ]
+      },
+      {
         "group": "Product SOP and FAQ",
         "pages": [
           {
@@ -139,76 +209,6 @@
           "process-sop-faq/repayment",
           "process-sop-faq/slack-channels",
           "process-sop-faq/tds"
-        ]
-      },
-      {
-        "group": "Tools and systems",
-        "pages": [
-          {
-            "group": "Clevertap",
-            "pages": [
-              "tools-and-systems/clevertap",
-              "tools-and-systems/clevertap/how-to-know-user-subscribed-to-comms"
-            ]
-          },
-          {
-            "group": "Finder",
-            "pages": [
-              "tools-and-systems/finder",
-              {
-                "group": "How to check Sell order details",
-                "pages": [
-                  "tools-and-systems/finder/how-to-check-sell-order-details",
-                  "tools-and-systems/finder/how-to-check-sell-order-details/what-to-do-when-finder-shows-ddpi-initiated-but-user-is-saying-it-showed-an-error"
-                ]
-              },
-              "tools-and-systems/finder/how-to-check-buy-order-details",
-              "tools-and-systems/finder/how-to-check-family-account-details",
-              "tools-and-systems/finder/how-to-check-form-121-submission-details-and-download-it",
-              "tools-and-systems/finder/how-to-check-if-account-is-deleted",
-              "tools-and-systems/finder/how-to-check-if-referral-is-added-and-referral-payout-details",
-              "tools-and-systems/finder/how-to-check-repayment-details"
-            ]
-          },
-          {
-            "group": "Mixpanel",
-            "pages": [
-              "tools-and-systems/mixpanel",
-              "tools-and-systems/mixpanel/how-to-check-why-referee-not-mapped",
-              "tools-and-systems/mixpanel/how-to-find-a-user-without-phone-number-using-mixpanel"
-            ]
-          },
-          {
-            "group": "Payment Gateway",
-            "pages": [
-              "tools-and-systems/payment-gateway",
-              {
-                "group": "Cashfree",
-                "pages": [
-                  "tools-and-systems/payment-gateway/cashfree",
-                  "tools-and-systems/payment-gateway/cashfree/how-to-check-order-failure-cashfree",
-                  "tools-and-systems/payment-gateway/cashfree/how-to-check-sip-autopay-status-on-cashfree"
-                ]
-              },
-              {
-                "group": "Razorpay",
-                "pages": [
-                  "tools-and-systems/payment-gateway/razorpay",
-                  "tools-and-systems/payment-gateway/razorpay/how-to-check-order-failure-status-on-razorpay"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Robylon",
-            "pages": [
-              "tools-and-systems/robylon",
-              "tools-and-systems/robylon/how-to-search-previous-chat-in-robylon",
-              "tools-and-systems/robylon/how-to-search-user-email-in-robylon",
-              "tools-and-systems/robylon/my-robylon-page-not-working"
-            ]
-          },
-          "tools-and-systems/msg91"
         ]
       },
       {
