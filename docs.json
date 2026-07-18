@@ -4,10 +4,13 @@
   "name": "CX Wiki",
   "colors": {
     "primary": "#05a54b",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "light": "#05a54b",
+    "dark": "#05a54b"
   },
-  "favicon": "/favicon.svg",
+  "favicon": {
+    "light": "/images/icon.png",
+    "dark": "/images/icon.png"
+  },
   "navigation": {
     "groups": [
       {
