@@ -1,8 +1,160 @@
 ---
 title: "Bond SIP"
-description: "Bond SIP — CX wiki reference."
 ---
 
-# SIP user journey in Wint Wealth
+# SIP User Journey
 
-[https://sundardotpy.github.io/reference/SIP_user_journey.html](https://sundardotpy.github.io/reference/SIP_user_journey.html)
+SIP, in bonds allows user to invest a fixed amount every month in bonds selected by Wint Wealth. The process is automated, similar to mutual fund SIPs. It helps investors build a disciplined habit of investing regularly and also supports diversification over time. In simple terms, it works like a regular bond investment. The only difference is that the payment happens automatically on the selected date. All other aspects of the bond, such as issuer, coupon, tenure, repayment, and risk, remain the same.
+
+### Core journey stages
+
+Theme selection, issuer review, first order, mandate setup, monthly notification, deduction and settlement.
+
+Skip allowed till **T-2 days**
+
+Settlement **T\+1 / next working day**
+
+UPI mandate **₹10K SIP use case**
+
+eNACH mandate **₹20K and above**
+
+Journey overview
+
+## End-to-end SIP flow
+
+The SIP order behaves like a regular bond order after creation, but the payment is collected through the active Autopay mandate for recurring deductions.
+
+1. **Select SIP theme**<br />User selects the SIP theme, date of monthly deduction, and investment amount. High Rated and High Returns generally use amount multiples of ₹10,000.
+2. **Review issuer pool**<br />User sees issuers available under the selected theme pool. The user can modify the pool by excluding issuers they do not want.
+3. **Pay first installment**<br />The first installment is paid on the same day as a regular order through UPI or net banking. The initial order still gets the SIP benefit where applicable.
+4. **Set up Autopay**<br />After initial payment, the user sets up the Autopay mandate for recurring deductions. UPI is used for lower ticket SIPs. eNACH is used for higher ticket SIPs.
+5. **Monthly notification**<br />User gets a notification 5 days before deduction with the bond chosen for that month. The SIP order can be skipped only until T-2 days.
+6. **Deduction & settlement**<br />Autopay deduction happens on the chosen date. Order settles on the next working day. Once settled, the bond appears like a normal bond in the portfolio.
+
+## SIP Activation Flows
+
+We've introduced a new flow for SIP activation on prod. There are now 3 ways to set up an SIP:
+
+1. **Normal flow**: User does 1st installment → sets up autopay
+2. **Direct to SIP**: User does payment for a bond (non-SIP) on the platform → is provided with an option to convert to SIP at the end of the flow at payment confirmation page → user sets up SIP autopay
+3. **Skip 1st Installment**: User gets an option to skip their 1st installment and directly set up an Autopay with the set deduction date and amount. This feature is provided on the payment selection page to the user along with other payment options, after they've selected units and the deduction date.
+
+### How to identify on Finder
+
+1. **Normal flow**: You'll find user's 1st installment and activation details under the SIP Tab in respective tables
+2. **Direct to SIP**: Details for 1st installment will not be filled under the SIP Orderid table, instead check for `direct_to_sip_conversion_orderid` column in Active SIP Theme table. This orderid can then be mapped to RFQ Orders Table under the RFQ tab to see from which bond the user converted to SIP.
+3. **Skip 1st Installment**: Details for 1st installment as well as `direct_to_sip_conversion_orderid` column in Active SIP Theme table will be empty.
+
+Date logic
+
+## Example: deduction date is 11 May
+
+Use this example when explaining when the user can skip and when the order becomes non-cancellable due to NPCI pre-debit notification.
+
+- **6 May** - Notification sent. User is informed about the current month SIP bond.
+- **6-9 May** - Skip window. User can skip the active SIP order during this period.
+- **10 May** - Pre-debit notification. NPCI pre-debit notification is triggered. Order cannot be cancelled.
+- **11 May** - Autopay deduction. Deduction happens from the linked bank account.
+- **12 May** - Settlement. Order settles on this date or the next working day.
+
+First order timing
+
+## Initial payment and recurring debit logic
+
+The first installment is paid immediately when SIP is set up. The recurring Autopay deduction depends on whether there is a minimum 10-day gap from setup to the chosen deduction date.
+
+**Chosen date is 1-22**<br />If the user sets up SIP on 12 April and chooses any date from 1 to 22, the first Autopay deduction will happen in May.
+
+Initial order: 12 Apr<br />Recurring debit: May 1-22
+
+**Chosen date is 23-30**<br />If the user sets up SIP on 12 April and chooses a date from 23 to 30, the recurring deduction can happen in April itself.
+
+Initial order: 12 Apr<br />Recurring debit: Apr 23-30
+
+Mandate setup
+
+## UPI mandate vs eNACH mandate
+
+The mandate is the NPCI/payment instruction. SIP is Wint Wealth's internal recurring investment configuration. Both need to be understood separately.
+
+| Parameter | UPI mandate | eNACH mandate |
+| --- | --- | --- |
+| **Typical use case** | Useful for ₹10,000 SIP setup. | Required for ₹20,000 and above SIP setup. |
+| **Mandate limit** | Amount per cycle can be up to ₹15,000. This is the maximum cap, not always the exact debit amount. | Can be set for higher limits. Modification is supported up to ₹2,90,000. |
+| **Monthly debit amount** | Actual debit depends on bond price on deduction date. | Actual debit depends on bond price on deduction date. |
+| **Modification** | Amount cannot be modified. Date can be modified. | Both amount and deduction date can be modified. |
+| **Support timeline** | Modification requests usually take 1-2 working days. | Modification requests usually take 1-2 working days. |
+
+Product rules
+
+## Key aspects
+
+**Monthly amount may not be exactly flat**<br />If the user selects ₹10,000 SIP, the actual monthly debit may be around ₹10,021 or ₹9,989. This happens because bond prices fluctuate daily due to accrued interest and fair price movement. The selected amount is the intended SIP size. The actual debit depends on the bond price on the deduction date.
+
+**Active SIP order blocks cancellation**<br />SIP cannot be cancelled when an active SIP order exists. The user must skip the order within the allowed window or wait until the order is settled.
+
+Skip till T-2<br />T-1 not cancellable<br />Wait for settlement
+
+Benefits
+
+## Why SIP can be beneficial
+
+**Extra 0.5% YTM benefit**<br />SIP investments can receive an additional 0.5% YTM benefit where applicable.
+
+0.25% no brokerage<br />0.25% reduced seller premium
+
+**Zero exit-load benefit**<br />For regular bonds, early exit may reduce the selling YTM by around 1%. For SIP investments, users can sell at the same YTM at which the bond was bought.
+
+Positive flow<br />Sell before maturity possible
+
+**No maximum tenure**<br />The SIP continues monthly until the user chooses to cancel it, subject to active order and mandate rules.
+
+Monthly recurring<br />User-controlled cancellation
+
+Themes
+
+## Current SIP theme reference
+
+**High Rated**<br />Theme pool generally contains A-rated bonds. A rated<br />Diversified pool
+
+**High Returns**<br />Theme pool generally contains high-yielding bonds from BBB- to A rated issuers. BBB- to A<br />Higher yield pool
+
+**₹5K SIP**<br />₹5K SIP is available, but it does not offer the extra 0.5% SIP benefit. Lower ticket size<br />No extra 0.5%
+
+Cancellation & failure model
+
+## Common edge cases
+
+**User asks to cancel on T-1**<br />Cancellation is not possible after the NPCI pre-debit stage. The user needs to wait for debit and settlement, then cancellation can be handled if no active SIP order remains.
+
+Waiting state<br />Not cancellable
+
+**Insufficient funds**<br />If funds are not available on debit day, the SIP order may fail and the SIP may get terminated. Wint Wealth does not charge a fine, but the bank may levy charges as per its policy.
+
+Failure risk<br />Bank policy applies
+
+**User cancels mandate directly**<br />If the user cancels the mandate before NPCI notification or before debit, it can cancel the mandate and the linked SIP flow. No deduction should happen in this hard-cancel scenario.
+
+Customer action<br />Edge case
+
+Definitions
+
+## Terminologies
+
+**Mandate (M)**<br />Autopay mandate registered with NPCI/payment rail for recurring debit.
+
+**SIP (S)**<br />Wint Wealth internal recurring investment configuration selected by the user.
+
+**SIP order (O)**<br />An active monthly order that works like a regular bond order, except payment happens through Autopay.
+
+**Subscription ID (ID)**<br />Identifier of the SIP Autopay mandate in Wint Finder. It can be used to filter the mandate and SIP order status in Cashfree.
+
+Internal workflow
+
+## Where to check and where to raise
+
+**Check mandate/order status**<br />Wint Finder \+ Cashfree Find the Subscription ID in Wint Finder and use it to filter SIP mandate and order status in Cashfree. Wint\_Wealth\_21775045729045
+
+**Cancel SIP from support end**<br />Raise workflow in #cx-api<br />Share User ID, SIP ID, mobile number, email ID, and user email confirmation. Ensure there is no active SIP order.
+
+**Any SIP issue**<br />Raise in #cx-internal-coordination Use the SIP workflow and include relevant screenshots, SIP ID, mandate status, and user confirmation wherever applicable.
