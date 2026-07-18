@@ -1,8 +1,64 @@
 ---
 title: "Record date"
-description: "Record date — placeholder page."
+description: "The cut-off date that determines who receives an upcoming interest payment."
 ---
 
-<Info>
-  This page is a placeholder. Content has not been written yet.
-</Info>
+## What is the record date?
+
+The **record date** is the cut-off date when the registrar checks demat details — including the linked bank account — to decide who receives an interest payment and where it is credited.
+
+To be eligible for an interest payment, an investor must hold the bond **on the record date**. The record date is usually set a few days before the payment date, and is typically **10–15 days** before the actual interest payment date.
+
+## Record date rule when selling
+
+Whether a user receives the upcoming interest payment depends on when they sell relative to the record date.
+
+| Sell timing | Coupon eligibility |
+| --- | --- |
+| Sell **after** the record date | User **still receives** the upcoming coupon payment |
+| Sell **before** the record date | User does **not** receive the upcoming interest for that period |
+
+### Checks and confirmations
+
+<Steps>
+  <Step title="Find the record date">
+    Look up the record date for the relevant bond and coupon period in the internal **Daily Pricing Sheet**.
+  </Step>
+
+  <Step title="Find the sell date">
+    Check **Finder → Liquidity → Order Details** and note the date the user placed their sell order.
+  </Step>
+
+  <Step title="Compare">
+    Compare the sell date with the record date to determine coupon eligibility, then communicate the outcome clearly to the user.
+  </Step>
+</Steps>
+
+<Note>
+  The record date is found in the Daily Pricing Sheet (internal reference), not in Finder.
+</Note>
+
+## Record date and bank account changes
+
+The record date also determines which bank account receives the interest:
+
+* Bank change done **before** the record date: upcoming interest is credited to the **new** bank account.
+* Bank change done **after** the record date: upcoming interest may still be credited to the **old** bank account.
+
+Always inform the user of this before they change their bank account. See [RFQ / Buy Order](/process-sop-faq/rfq-buy-order) for the full bank-change flow.
+
+## Record date and Form 121
+
+If a user submits Form 121 **after** the record date for a payout, it will not be considered for that payment and may be applied from the next repayment onward. See [TDS](/process-sop-faq/tds).
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Accrued Interest" href="/product-sop-faq/bonds/accrued-interest">
+    Interest accumulated since the last coupon payment.
+  </Card>
+
+  <Card title="Record date / liquidity tracker" href="/resources/record-date-liquidity-tracker">
+    Internal tracker for record dates.
+  </Card>
+</CardGroup>

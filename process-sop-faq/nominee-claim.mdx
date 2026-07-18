@@ -1,8 +1,120 @@
 ---
 title: "Nominee Claim"
-description: "Nominee Claim — placeholder page."
+description: "Adding, updating, and modifying nominees, plus the transmission process when no nominee exists."
 ---
 
-<Info>
-  This page is a placeholder. Content has not been written yet.
-</Info>
+## Add a nominee when none is set
+
+Share these steps with the user:
+
+<Steps>
+  <Step title="Open More or Profile">
+    Click **More** at the bottom left of the screen, or navigate to the profile section on desktop.
+  </Step>
+
+  <Step title="Go to Account Details">
+    Select **Account Details**.
+  </Step>
+
+  <Step title="Open Bond Demat Details">
+    Under that tab, click **Bond Demat Details**.
+  </Step>
+
+  <Step title="Add the nominee">
+    The option to add or update nominee details is available there.
+  </Step>
+</Steps>
+
+## Nominee update: single nominee
+
+Use this when the user wants to replace their existing single nominee.
+
+<Steps>
+  <Step title="Internal check on Finder">
+    Before doing anything, verify the following in Finder under the **SEBI KYC** section:
+
+    * Number of nominees = 1
+    * Nominee status = `APPROVED`
+  </Step>
+
+  <Step title="Get email confirmation from the user">
+    Ask the user to send a confirmation email from their registered email ID to [hello@wintwealth.com](mailto:hello@wintwealth.com) requesting the nominee update.
+  </Step>
+
+  <Step title="Get the email screenshot">
+    Once the user sends the email, retrieve the screenshot from the `#cx-email-coordination` channel.
+  </Step>
+
+  <Step title="Reset the nominee">
+    Raise a nominee reset request — Channel: `#cx-api` | Workflow: `/nominee-reset`
+  </Step>
+
+  <Step title="Ask the user to re-add the nominee">
+    Once the reset is confirmed, inform the user they can add their new nominee directly from the app under the Profile section.
+  </Step>
+</Steps>
+
+## Nominee update: multiple nominees
+
+Use this when the user wants to add more than one nominee or replace all existing nominees.
+
+<Steps>
+  <Step title="Confirm the number of nominees">
+    Ask the user how many nominees they wish to add and confirm all their details.
+  </Step>
+
+  <Step title="Share the required forms">
+    Send the following forms to the user over email:
+
+    1. Nomination Cancellation Form
+    2. Nomination Submission Form
+    3. KYC Form
+  </Step>
+
+  <Step title="Inform the user about the process">
+    Let the user know this is an offline process. Once the forms are filled and couriered to the office address, the operations team will process the nominee update.
+  </Step>
+</Steps>
+
+<Note>
+  Related forms are available under [Nomination Update forms](/resources/nomination-update-forms).
+</Note>
+
+## Nominee modification
+
+Use this when a user wants to modify any nominee detail, such as the nominee's address.
+
+<Steps>
+  <Step title="Inform the user it is offline">
+    Explain that this is an offline process and they will need to fill out the required forms and courier them to us.
+  </Step>
+
+  <Step title="Direct them to email">
+    Ask the user to write to [hello@wintwealth.com](mailto:hello@wintwealth.com); the email support team will assist with the required forms and steps.
+  </Step>
+
+  <Step title="Raise internally">
+    Raise it in the `#cx-email-coordination` channel and request the team respond to the mail with the steps and nominee modification form.
+  </Step>
+</Steps>
+
+## Transmission when no nominee is added
+
+If the primary user passes away and no nominee was added, the bond holdings must be transferred through the **legal heir process**. Legal heirs must provide specific documentation to prove their claim before the holdings can be moved to a new demat account.
+
+Guide the user to email [hello@wintwealth.com](mailto:hello@wintwealth.com); the support team will help them with the required steps, documents, and forms.
+
+### Required document checklist
+
+1. Transmission Form (Wint template)
+2. Indemnity Bond (Wint template)
+3. NOC signed by all legal heirs
+4. Individual Affidavit for each legal heir
+5. Original or notarized Death Certificate
+6. CMR and Holding Statement of the deceased (available via NSDL Speed-e or Wint)
+7. CMR of the legal heir's demat account (where bonds will be transferred)
+8. Self-attested PAN and Aadhaar of the deceased (attested by the heir) and of all legal heirs
+
+<Note>
+  Templates are available under [Transmisson forms](/resources/transmisson-forms).
+</Note>

@@ -1,8 +1,190 @@
 ---
 title: "TDS"
-description: "TDS — placeholder page."
+description: "TDS on bond interest — rates, filing timelines, Form 26AS/168, and handling TDS issues."
 ---
 
+<Warning>
+  We are not authorised tax advisors and provide only general information. Always add this disclaimer when advising users, and recommend they consult their own tax advisor for personalised guidance.
+</Warning>
+
+## TDS basics
+
+### What percentage of TDS is deducted?
+
+TDS at **10%** is deducted on bond interest income as per applicable Income Tax rules. This rate is subject to change as per government regulations, and the final tax liability depends on the user's applicable income tax slab.
+
+### How is tax applicable on bonds?
+
+Interest income earned from bonds is taxable as per the user's applicable income tax slab. However, the issuer deducts TDS at 10% on each interest payout, as per the repayment frequency.
+
+* If total income is **below** the taxable threshold, the user can claim a refund of the TDS while filing their Income Tax Return (ITR).
+* If total income is **above** the taxable threshold and the applicable tax rate is higher than 10%, the user pays the remaining liability while filing their ITR.
+
+### Is TDS deducted on the entire interest or after adjusting cost of acquisition?
+
+TDS is deducted only on the interest earned from the bond, not on the principal or the cost of acquisition. The standard rate is 10% on the interest payout.
+
+### Is TDS deducted if interest is below ₹10,000?
+
+TDS may not be deducted if the total annual interest from the bond is below ₹10,000, as specified under the Income Tax Act. However, this depends on the issuer. Some entities follow this ₹10,000 threshold while others still deduct TDS.
+
+<Note>
+  Currently **Wint Capital** and **Muthoot Fincorp** follow this threshold, so TDS is not deducted if annual interest is below ₹10,000.
+</Note>
+
+### Why is TDS deducted even though I am below the taxable limit?
+
+Even if total income is below the taxable limit, TDS is still deducted at 10% on bond interest because this is the standard rate applied by the issuer. Users below the threshold can claim a refund of the TDS when filing their ITR.
+
+### How can I be exempt from TDS?
+
+Submit **Form 121** — see [Form 121](/product-sop-faq/form-121) for the full process. Once accepted by the bond-issuing entity, TDS will not be deducted on interest payouts. Acceptance is at the discretion of the issuer/NBFC.
+
+### Why do we show interest payments pre-tax?
+
+We show pre-tax interest payments to create uniformity on the platform, as we do not have details of each individual's tax slab.
+
+## TDS filing timelines
+
+Users often ask when their TDS will be reflected in Form 26AS.
+
+| Quarter | Filing due date | Reflection in 26AS (estimated) |
+| --- | --- | --- |
+| Apr – Jun | July 31st | August 15th |
+| Jul – Sep | October 31st | November 15th |
+| Oct – Dec | January 31st | February 15th |
+| Jan – Mar | May 31st | June 15th |
+
 <Info>
-  This page is a placeholder. Content has not been written yet.
+  **Key takeaway for agents**
+
+  * **Standard quarters** (Apr–Jun, Jul–Sep, Oct–Dec): TDS returns are due 1 month after the quarter ends.
+  * **Year-end quarter** (Jan–Mar): the government provides an extra month due to financial year closing, so the deadline is May 31st.
+  * 26AS typically reflects TDS within ~15 days of the filing due date.
 </Info>
+
+## Where users can see TDS
+
+The TDS deducted is reflected in **Form 168** (previously Form 26AS), accessible through the [Income Tax portal](https://www.incometax.gov.in).
+
+### How to check TDS in Form 168 / AIS
+
+**Access Form 168 (previously Form 26AS):**
+
+<Steps>
+  <Step title="Log in to the portal">
+    Visit the [Income Tax e-Filing portal](https://www.incometax.gov.in) and log in using PAN and password.
+  </Step>
+
+  <Step title="Open the tax credit statement">
+    Go to **My Account** → **View Form 26AS (Tax Credit)**.
+  </Step>
+
+  <Step title="Select the year">
+    Select the relevant assessment year and view or download the form.
+  </Step>
+</Steps>
+
+**Access AIS (Annual Information Statement):** log in to the portal and go to **Services** → **View Annual Information Statement (AIS)**. AIS shows all financial transactions reported to the IT Department, including TDS on bond interest.
+
+**Verify TDS:** look for entries under *TDS on Interest* or *Bond Interest* and ensure the amount deducted by the issuer matches the interest income.
+
+### Will users get a TDS certificate / Form 16A?
+
+We do not issue a separate TDS certificate for bond interest. The TDS deducted by the issuer is reflected in Form 26AS, which the user can access through the Income Tax e-Filing portal.
+
+## Claiming TDS
+
+Users can claim the TDS deducted by the issuer while filing their ITR for the relevant financial year. The deducted TDS is reflected in Form 168 (previously Form 26AS), and any eligible refund is processed after the ITR is filed.
+
+### Documents needed for tax filing
+
+* **Form 168** (previously Form 26AS) — consolidated tax statement reflecting TDS and other tax credits
+* **Interest certificates** — statements from the bond issuer showing interest earned during the financial year
+* **Purchase / redemption details** — principal invested and redeemed, used for calculating capital gains
+* **PAN card**
+* **Bank statements** — for interest credited or bond redemption proceeds
+
+## TDS issues
+
+### TDS deducted is not reflected in Form 168
+
+**Response to user:**
+
+> If the TDS deducted is not reflected in your Form 168 (previously Form 26AS), please share a copy of your Form 168 with us at [hello@wintwealth.com](mailto:hello@wintwealth.com). We will verify the details and take the necessary steps to resolve the issue. If there are any dependencies on a third party, we will keep you informed and update you as soon as we receive confirmation.
+
+<Steps>
+  <Step title="Cross-verify">
+    Cross-verify the TDS amount against the Form 26AS shared by the user.
+  </Step>
+
+  <Step title="Raise internally">
+    If TDS is indeed not reflected, raise the issue in `#asset-repayment-issues` and tag the relevant POC. Explain the scenario in detail and request confirmation or notification on resolution.
+  </Step>
+
+  <Step title="Handle third-party dependency">
+    If there is a third-party dependency, inform the user: "The resolution depends on a third-party process. We will update you as soon as we receive any information and will only get back to you when there is a confirmed update."
+  </Step>
+</Steps>
+
+### Mismatch between actual TDS deducted and the deduction filed
+
+**Response to user:**
+
+> We have received your query regarding the mismatch notice. We understand your concern and would like to assure you that we will escalate this to the concerned team. Once we have an update or clarification, we will inform you promptly.
+
+**Internal process:**
+
+<Steps>
+  <Step title="Open the channel">
+    Go to the `asset_repayment_issues` channel.
+  </Step>
+
+  <Step title="Trigger the workflow">
+    Type `/raise-tds-issue` and send the message. The workflow form will open.
+  </Step>
+
+  <Step title="Submit">
+    Fill in the required details and click **Submit**.
+  </Step>
+</Steps>
+
+### TDS still deducted after submitting Form 121
+
+**Step 1 — set expectations and check submission**
+
+> Please note that the final acceptance and processing of Form 121 is entirely at the discretion of the NBFC. In some cases, NBFCs may not acknowledge or process the submission immediately. Could you please let us know when you submitted the form?
+
+Ask the user when the form was submitted and for which bond, then check **Finder → 15G/H Section** to confirm the submission date.
+
+**Step 2 — validate the payout**
+
+<Steps>
+  <Step title="Get proof of the post-TDS amount">
+    Verify the payout credited to the user's bank account by requesting a bank statement from their registered email to [hello@wintwealth.com](mailto:hello@wintwealth.com).
+  </Step>
+
+  <Step title="Coordinate over email">
+    Go to `#cx-email-coordination`, paste the user's email from Finder, and ask for the bank statement.
+  </Step>
+
+  <Step title="Check the record date">
+    In **Bond Transactions**, copy the Product ID, find the bond on the platform, and download the Daily Pricing Sheet / Price Calculation Sheet to check the record date.
+  </Step>
+
+  <Step title="Resolve or escalate">
+    If the form was submitted **after** the record date, inform the user it was not considered for this payment and may apply to the next repayment. If it was submitted **before** the record date and TDS was still deducted, raise it in `#form-15g-h` and tag the relevant POC with the submission date, bond details, and TDS deduction observed.
+  </Step>
+</Steps>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Form 121" href="/product-sop-faq/form-121">
+    Eligibility, submission methods, and issuer acceptance.
+  </Card>
+
+  <Card title="Bond taxation" href="/product-sop-faq/bonds/taxation">
+    Capital gains, maturity, and slab treatment for bonds.
+  </Card>
+</CardGroup>

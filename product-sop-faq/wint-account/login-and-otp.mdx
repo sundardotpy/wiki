@@ -1,8 +1,154 @@
 ---
 title: "Login & OTP"
-description: "Login & OTP"
+description: "Signing up, logging in, and troubleshooting OTP delivery issues."
 ---
 
-<Info>
-  This page is a placeholder. Content has not been written yet.
-</Info>
+## How to sign in to Wint Wealth
+
+Users can sign in using either the mobile app or a web browser.
+
+<Steps>
+  <Step title="Open Wint Wealth">
+    * **Android:** download the app from the Google Play Store
+    * **iPhone (iOS):** download the app from the Apple App Store
+    * **Computer / laptop:** visit the Wint Wealth website
+  </Step>
+
+  <Step title="Start the registration">
+    Click **Get Started**.
+  </Step>
+
+  <Step title="Enter your details">
+    1. **Mobile number** — the number linked to the user's government identity card
+    2. **Email address** — the user's personal email ID
+  </Step>
+
+  <Step title="Verify with OTP">
+    A One-Time Password is sent to **both** the mobile number and the email. Enter both codes to verify.
+  </Step>
+
+  <Step title="Set a security PIN">
+    Create a secure 6-digit PIN. This is used at every login to protect the account.
+  </Step>
+</Steps>
+
+## Registration issues
+
+### Non-Aadhaar linked mobile number at login
+
+The user is entering a mobile number that is not linked to their Aadhaar.
+
+**Response to user:**
+
+> No issue at all! You can use any mobile number of your choice to log in to your Wint Wealth account. Just keep in mind that during KYC, the OTP for verification will be sent to your Aadhaar-linked mobile number.
+
+<Note>
+  There is no mismatch or restriction at login. Straightforward resolution — no further action needed.
+</Note>
+
+### Email ID already registered with another mobile number
+
+The user is trying to register but sees an error saying the email ID is already linked to another account.
+
+**Response to user:**
+
+> Could you please share your email ID and the mobile number you entered? I'll check on my end right away.
+
+<Steps>
+  <Step title="Get the details">
+    Ask the user to share their email ID and the mobile number they entered.
+  </Step>
+
+  <Step title="Look up the email in Finder">
+    Search Finder by the email ID to identify which mobile number is currently linked to it. Note the **last 4 digits** of the linked number.
+  </Step>
+
+  <Step title="Compare">
+    Compare the number given by the user with the number shown in Finder, and confirm both accounts exist and are distinct.
+  </Step>
+
+  <Step title="Inform the user">
+    Share **only** the last 4 digits and explain the email cannot be reused.
+  </Step>
+</Steps>
+
+**Response template:**
+
+> It looks like this email ID is already linked to a mobile number ending in XXXX. If you'd like to open a new account, you'll need to use a different email ID — the same email cannot be used for more than one account.
+
+### User wants to reuse the same email ID for a new account
+
+**Response to user:**
+
+> Your email ID and mobile number are unique identifiers for your Wint Wealth account. Each account on our platform must have its own unique email ID and mobile number. Because of this, the same email ID cannot be used to open another new account.
+
+<Note>
+  **Agent note:** This is a platform-level restriction — no workaround exists.
+</Note>
+
+## Not receiving OTP on mobile during login
+
+Work through this flow in order.
+
+<Steps>
+  <Step title="Check email OTP first">
+    **Say to user:** "Please check if you have received the OTP on your registered email ID. If not, try triggering it again."
+  </Step>
+
+  <Step title="If no OTP on email either — reset">
+    <Warning>
+      **Internal — do not share with the user:** Go to Finder and reset the OTP for the user's account.
+    </Warning>
+
+    **Then say:** "I've made a quick change from my end. Could you please try again and check if you're now receiving the OTP?"
+
+    If the user confirms the OTP is now received, the issue is resolved.
+  </Step>
+
+  <Step title="If OTP arrives on email only — check location">
+    **Say to user:** "I understand you're getting the OTP on email but not on your mobile. May I ask — are you currently in India?"
+  </Step>
+
+  <Step title="If the user is outside India">
+    Mobile OTP is only delivered to numbers **within India**. Email OTP is the alternative for users abroad.
+
+    **Say to user:** "Since you are currently outside India, OTP delivery to your mobile number is not supported. You can use the OTP sent to your email ID to log in — that works perfectly fine!"
+
+    This is expected behaviour for international users. Issue closed.
+  </Step>
+
+  <Step title="If the user is inside India — troubleshoot">
+    **Say to user:** "Here are a few things that could be causing this:
+
+    1. **Network issues** — your network may be experiencing a delay. Please wait a few minutes and try again.
+    2. **DND settings** — your number might be registered under Do Not Disturb services, which can block SMS delivery.
+    3. **Incorrect number** — please double-check that the mobile number on your account is correct.
+    4. **Carrier restrictions** — some carriers block certain types of messages. You may want to check with your network provider."
+  </Step>
+
+  <Step title="Check delivery reports">
+    <Warning>
+      **Internal — do not share with the user:** If none of the above resolves the issue, check the delivery reports in the [MSG91 dashboard](/tools-and-systems/msg91) for details on the failed delivery.
+    </Warning>
+  </Step>
+
+  <Step title="Escalate">
+    <Warning>
+      **Critical — escalate.** Raise to TL immediately. Do not attempt further troubleshooting on your own.
+
+      TL sends an email to the MSG91 team with the user's details and the issue summary for further investigation.
+    </Warning>
+  </Step>
+</Steps>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="MSG91" href="/tools-and-systems/msg91">
+    Checking SMS delivery reports.
+  </Card>
+
+  <Card title="KYC Modification" href="/process-sop-faq/kyc-modification">
+    Errors during the KYC flow after sign-up.
+  </Card>
+</CardGroup>

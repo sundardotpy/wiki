@@ -1,8 +1,96 @@
 ---
 title: "Wint Portfolio Dashboard"
-description: "Wint Portfolio Dashboard — placeholder page."
+description: "Dashboard performance queries, navigation, and the gains verification formula."
 ---
 
+## Dashboard performance
+
+### Why is the dashboard displaying a wrong or negative YTM percentage?
+
+This usually happens when repayments have not been updated correctly in the system. It can be fixed on request.
+
+**Response to user:**
+
+> Please allow us a moment to verify and correct the displayed value. You can verify your returns using this formula: Current Value minus Investment Value plus Returns Till Date plus TDS.
+
+<Steps>
+  <Step title="Check for missing repayments">
+    Check Finder for any missing or incorrectly recorded repayments for the user.
+
+    **Finder:** Portfolio / Repayments section — look for entries that are missing or show incorrect amounts.
+  </Step>
+
+  <Step title="Compare against the pricing sheet">
+    Compare the user's cash flows with the **Daily Pricing Sheet** to identify discrepancies, cross-checking against the repayment records in Finder.
+  </Step>
+
+  <Step title="Raise the correction">
+    If a discrepancy is found, raise the correction request with the relevant team.
+
+    Channel: `#cx-live` | Tag: `@cx-ir`, `@cx-TL`, `@cx-L2`
+  </Step>
+</Steps>
+
 <Info>
-  This page is a placeholder. Content has not been written yet.
+  **Verification formula (for agents)**
+
+  `Gains = Current Value − Investment Value + Returns Till Date + TDS`
+
+  Use this to cross-check the user's dashboard figures before escalating.
 </Info>
+
+<Warning>
+  **Escalation** (if figures still do not match after verification) — Channel: `#cx-live` | Tag: `@cx-ir`, `@cx-TL`, `@cx-L2`
+</Warning>
+
+### Why is the current value less than the invested value?
+
+There are two common reasons:
+
+1. **Amortization** — if some of the principal has already been repaid as part of scheduled repayments, the remaining bond value will naturally be lower than the original invested amount.
+2. **System update timing** — immediately following a repayment there can be a brief delay before the dashboard reflects the updated value.
+
+In both cases this is expected behaviour and not an error. See [Basics of bonds](/product-sop-faq/bonds/basics-of-bonds) for more on amortised bonds.
+
+### Why do gains change between days?
+
+Daily changes in dashboard gains are typically caused by one of two factors:
+
+1. **Amortization** — as principal repayments are processed, the outstanding investment value adjusts accordingly.
+2. **Dashboard update timing** — the dashboard may reflect changes slightly before or after a repayment is fully processed.
+
+## Dashboard navigation
+
+### Where can I see all my investments in one place?
+
+All investments are under the **Portfolio** section of the app or website.
+
+<Note>
+  Investments that are still being processed appear on the **Orders** page, not in the Portfolio section.
+</Note>
+
+**App / Website:** Bottom navigation → **Portfolio**
+
+### Why is an investment showing as Pending?
+
+An investment shows as **Pending** when the order has been placed but has not yet reached final settlement. This is normal — the investment moves to the Portfolio once settlement is complete. The current status and expected settlement timeline are visible in the **Orders** section.
+
+### Can I sell my investment directly from the portfolio?
+
+Yes. Navigate to the specific bond in the Portfolio section and tap **Sell** to initiate a sale.
+
+<Note>
+  The ability to sell depends on market liquidity and buyer availability at the time of placing the sell order.
+</Note>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Liquidity" href="/product-sop-faq/liquidity">
+    Placing sell orders, DDPI, and settlement.
+  </Card>
+
+  <Card title="YTM" href="/product-sop-faq/bonds/ytm">
+    How yield and XIRR are calculated.
+  </Card>
+</CardGroup>

@@ -1,0 +1,354 @@
+---
+title: "Liquidity process"
+description: "Placing sell orders, DDPI activation, order status, settlement, and payment troubleshooting."
+---
+
+## Liquidity general
+
+### How to place a sell order
+
+<Steps>
+  <Step title="Open the platform">
+    Open the Wint Wealth app or visit [www.wintwealth.com](https://www.wintwealth.com).
+  </Step>
+
+  <Step title="Go to Portfolio">
+    Tap **Portfolio**, then go to **Investments**.
+  </Step>
+
+  <Step title="Select and sell">
+    Select the bond you want to sell, tap **Sell**, and complete the steps.
+  </Step>
+</Steps>
+
+**App / Website:** Portfolio → Investments → Select Bond → Sell
+
+<Warning>
+  Always check the user's **DDPI status** in Finder before guiding them to sell. Finder: Liquidity → DDPI Status.
+
+  * **Active** — guide the user through the sell flow.
+  * **Inactive or Pending** — guide the user to activate DDPI first.
+</Warning>
+
+### Maximum amount that can be sold in a day
+
+Users can liquidate any amount, but a **single sell order cannot exceed ₹50,00,000**. To liquidate more, the user must place multiple sell orders.
+
+### Have all sell orders been executed successfully?
+
+98% of sell orders placed on Wint Wealth are placed on the same day. In most cases users receive funds in their bank account by **T+1 working day**.
+
+### What happens at maturity if there is no liquidity?
+
+At maturity the bond is redeemed directly by the bond issuer. Maturity payouts do **not** depend on buyer availability on the Wint platform — the availability of secondary market buyers has no impact on the maturity payout.
+
+### Brokerage, penalty, or early withdrawal charge
+
+There is no brokerage charged for selling bonds on Wint Wealth. When a sell order is placed prematurely, the bond is sold at a YTM up to **1% lower** than the purchase YTM. The impact is limited to the interest component, not the principal.
+
+See [Sell charges](/product-sop-faq/bonds/sell-charges) for the full breakdown.
+
+## DDPI
+
+**DDPI** (Demat Debit and Pledge Instructions) is a one-time authorisation that allows the broker to debit securities from the demat account without requiring a TPIN or OTP for every transaction. It only needs to be activated once.
+
+### How to activate DDPI
+
+<Steps>
+  <Step title="Open Portfolio">
+    Open the Wint app and click on **Portfolio**.
+  </Step>
+
+  <Step title="Select the bond">
+    Click the **Investments** tab and select the bond you wish to sell.
+  </Step>
+
+  <Step title="Proceed to sell">
+    Click **Proceed to Sell**. The app shows a pop-up to sign the DDPI.
+  </Step>
+
+  <Step title="Verify with Aadhaar">
+    Enter your Aadhaar number and complete the OTP verification.
+  </Step>
+</Steps>
+
+Once activated, DDPI will be ready within **24 to 48 working hours**.
+
+### DDPI status reference
+
+| Status | Meaning | Action |
+| --- | --- | --- |
+| **Pending** | Activation in progress | Ask the user to wait 24–48 working hours |
+| **Active** | Ready | User can proceed with selling |
+| **Inactive** | Not activated | Guide the user to activate via the Sell flow in the app |
+
+### Checks and confirmations
+
+<Steps>
+  <Step title="Check DDPI status">
+    Check **Finder → Liquidity → DDPI Status** before responding to any sell-related query.
+  </Step>
+
+  <Step title="If just activated">
+    Inform the user to wait 24–48 working hours before attempting to sell. Check the DDPI activation timestamp if available.
+  </Step>
+
+  <Step title="If active and sell not placed">
+    Guide the user to place the sell order. Check **Finder → Liquidity → Order Status** to confirm no pending sell orders exist for that bond.
+  </Step>
+
+  <Step title="If sell failed">
+    Ask the user to re-attempt the sell flow. Check Order Status for any error or failed order logged.
+  </Step>
+
+  <Step title="If sold but funds not received">
+    If the bond was executed, T+1 has passed, and the amount has not been received, request the bank statement and follow the payment troubleshooting below.
+  </Step>
+</Steps>
+
+### Error while signing DDPI
+
+<Steps>
+  <Step title="Check the status">
+    Check the DDPI status in Finder.
+  </Step>
+
+  <Step title="Check the signing error">
+    Check the DDPI signing error in Finder under the API section: `Error_in_signing_forms(User_ID)` using the user's ID.
+  </Step>
+
+  <Step title="Get a screenshot">
+    If nothing is found in Finder, ask the user for a screenshot of the error message to identify the specific failure.
+  </Step>
+
+  <Step title="Request Aadhaar">
+    Ask the user to share a self-attested Aadhaar card.
+  </Step>
+
+  <Step title="Escalate">
+    Raise the issue in `#cx-internal-coordination` for further assistance if needed.
+  </Step>
+</Steps>
+
+## Order status and settlement
+
+Users can check sell order status by clicking **More/Profile** → **Orders** ([wintwealth.com/orders](https://www.wintwealth.com/orders/)).
+
+Once a sell order is executed, the settlement amount reflects in the demat-linked bank account by **end of day on T+1 working day**. If T+1 falls on a weekend or public holiday, settlement is credited on the next working day.
+
+<Steps>
+  <Step title="Check the settlement date">
+    Check **Finder → Liquidity → Scheduled_settlement_date** and note the settlement date.
+  </Step>
+
+  <Step title="If order is Pending">
+    Share the scheduled settlement date with the user.
+  </Step>
+
+  <Step title="If order is Executed">
+    Inform the user the amount will reflect by EOD on the settlement date. Check the scheduled settlement date for the order ID to provide clarity.
+  </Step>
+
+  <Step title="If settlement falls on a non-working day">
+    Inform the user the next working day applies.
+  </Step>
+</Steps>
+
+## Cancelling a sell order
+
+A sell order can be cancelled **only if it has not yet been traded on the exchange**.
+
+| Order status | Cancellation |
+| --- | --- |
+| `INITIATED` | Cancellation is possible |
+| `TRADED` | Cancellation is **not** possible |
+
+<Steps>
+  <Step title="Check the order status">
+    Check **Finder → Liquidity → Order_Status**.
+  </Step>
+
+  <Step title="If Traded">
+    Inform the user cancellation is not possible.
+  </Step>
+
+  <Step title="If Initiated">
+    Proceed with cancellation. Collect written email confirmation from the user and note the Sell Order ID.
+  </Step>
+
+  <Step title="Raise the request">
+    Raise a cancellation request in `#cx-ops` with the user's registered mobile number, Sell Order ID, and email confirmation screenshot.
+  </Step>
+
+  <Step title="Verify">
+    Once Ops confirms cancellation, verify the updated status in Finder and inform the user.
+  </Step>
+</Steps>
+
+<Warning>
+  **Escalation** — Channel: `#cx-ops`. Include: registered mobile number, Sell Order ID, email confirmation screenshot. Only raise after confirming `Order_Status = Initiated` in Finder.
+</Warning>
+
+## Payment not received after T+1
+
+**Response to user:**
+
+> We are sorry to hear the amount has not been received yet. Could you please share your bank statement with us at [hello@wintwealth.com](mailto:hello@wintwealth.com) so we can investigate further?
+
+<Steps>
+  <Step title="Verify T+1 has passed">
+    Check **Finder → Liquidity → Scheduled_settlement_date** and confirm the date has passed.
+  </Step>
+
+  <Step title="Request the bank statement">
+    Ask the user to email their bank statement to [hello@wintwealth.com](mailto:hello@wintwealth.com).
+  </Step>
+
+  <Step title="Raise for review">
+    Once received, raise the bank statement on `#cx-emailcoordination` for review.
+  </Step>
+
+  <Step title="Request the CMR">
+    If the amount is confirmed not received, request the user's CMR (Client Master Report).
+  </Step>
+
+  <Step title="Compare IFSC">
+    Compare the IFSC in the bank statement with the IFSC on the CMR. Check **Finder → KYC / Bank Details → IFSC**.
+  </Step>
+
+  <Step title="If IFSC mismatch">
+    Ask the user to update their bank details in the app and raise in `#cx-ops` with the mismatch details, bank statement, and CMR.
+  </Step>
+
+  <Step title="After bank update">
+    Wait 48 working hours for NSDL to update, obtain the new CMR, and post it in the same thread.
+  </Step>
+</Steps>
+
+<Warning>
+  **NRE account check — always check before raising a case.**
+
+  If payment is still not received after the steps above, confirm whether the user's linked bank account is an **NRE** (Non-Resident External) account. NRE accounts may reject inward credits from certain sources.
+
+  If confirmed, inform the user and raise on `#cx-ops`. The Ops team may request the user link a new Indian savings bank account.
+</Warning>
+
+**Escalation** — Primary channel `#cx-emailcoordination` (bank statement review); secondary `#cx-ops` (IFSC mismatch, NRE account, unresolved cases). Include: bank statement, CMR, IFSC details, NRE status if applicable.
+
+## Sell amount calculation
+
+The sell amount depends on the difference between the effective YTM at which the investor bought the bond and the applicable selling YTM at the time of premature selling. See [Sell charges](/product-sop-faq/bonds/sell-charges) for the worked example.
+
+<Steps>
+  <Step title="Identify the investment type">
+    Check **Finder → Portfolio / Orders** to determine whether the investment was via SIP, RFQ - Maturity, or RFQ - Flexi Tenure.
+  </Step>
+
+  <Step title="Apply product rules">
+    For **Flexi Tenure and SIP** orders, no sell deduction applies when the investment is redeemed as per the product's scheduled tenure. If sold manually before maturity, a YTM deduction of up to 1% applies.
+  </Step>
+
+  <Step title="Check purchase details">
+    Check the investment date and YTM at purchase — **Finder → Portfolio → Bond Details**.
+  </Step>
+
+  <Step title="Check sell details">
+    Check the sell date and current buyer YTM demand — **Finder → Liquidity → Order Details**.
+  </Step>
+
+  <Step title="Calculate and share">
+    Calculate the expected deduction based on the YTM difference using the internal Reference Sheet. Share the calculation with the user if they ask for a breakdown.
+  </Step>
+</Steps>
+
+## Interest eligibility and the record date
+
+Whether the user receives the upcoming interest payment depends on the record date for that coupon.
+
+| Sell timing | Coupon eligibility |
+| --- | --- |
+| Sell **after** the record date | User **still receives** the upcoming coupon |
+| Sell **before** the record date | User does **not** receive the upcoming interest |
+
+The record date is found in the **Daily Pricing Sheet** (internal reference), not in Finder. See [Record date](/product-sop-faq/bonds/record-date).
+
+## Select Units screen skips automatically
+
+The Select Units screen skips automatically because there is already a **pending sell order for the same bond**. A new sell order cannot be placed for a bond that has an existing pending sell order. Once the pending order settles, the user can sell the remaining units.
+
+<Steps>
+  <Step title="Check for pending orders">
+    Check **Finder → Liquidity → Order Status** for any Pending or Initiated orders for the same bond.
+  </Step>
+
+  <Step title="If a pending order exists">
+    Confirm the scheduled settlement date and share it with the user.
+  </Step>
+
+  <Step title="If the pending order has settled">
+    Confirm the user can now place a new sell order for the remaining units.
+  </Step>
+</Steps>
+
+## Flexi Tenure bonds
+
+Flexi Tenure bonds have a scheduled sell date on the platform but also a final maturity date.
+
+### Do I need a buyer at maturity?
+
+No. At maturity the bond is automatically redeemed by the issuer. No buyer on the Wint platform is needed — the issuer directly pays out the principal and all accrued interest at the final maturity date.
+
+### What if no buyers are available on the scheduled sell date?
+
+The bond simply continues until the final maturity date. There is no loss to the investment due to lack of buyers. The user continues to earn interest, and at final maturity the issuer repays the full principal along with all outstanding interest.
+
+### Can I sell a Flexi Tenure bond before maturity?
+
+Yes, provided buyers are available on the platform at the time of the sell order. The ability to sell depends on current market liquidity and buyer availability.
+
+When a sell order is placed manually before the Flexi Tenure maturity date or the tenure selected at investment, the bond is sold at a YTM up to **1% lower** than the purchase YTM. This keeps the bond attractive to buyers, covers secondary transaction costs, and helps maintain platform liquidity.
+
+Check DDPI status is **Active** and confirm the bond is a Flexi Tenure type in **Finder → Bond Details**.
+
+### What if DDPI is not signed by the scheduled sell date?
+
+If DDPI has not been activated by the scheduled sell date, the scheduled sell request will **not execute**. The Flexi Tenure bond continues until the final maturity date, where the issuer pays out the full principal plus all applicable interest directly to the user's bank account.
+
+<Steps>
+  <Step title="Check DDPI timing">
+    Check whether DDPI was active on or before the scheduled sell date — compare the DDPI status and activation date with the scheduled sell date.
+  </Step>
+
+  <Step title="Confirm continuation">
+    If DDPI was not active, confirm no sell order was executed and inform the user the bond has continued to final maturity.
+  </Step>
+
+  <Step title="Guide activation">
+    Guide the user to activate DDPI if they wish to sell in the secondary market before final maturity.
+  </Step>
+</Steps>
+
+## Quick reference
+
+| Query | Key action | Finder check |
+| --- | --- | --- |
+| How to sell a bond | Portfolio → Investments → Select bond → Sell. Check DDPI first | Liquidity → DDPI Status |
+| Max sell per day | Single order limit ₹50,00,000. Multiple orders allowed | — |
+| DDPI: what it is | One-time auth for demat debit. Activate via Sell flow | Liquidity → DDPI Status |
+| DDPI: just activated | Wait 24–48 working hours before selling | DDPI activation timestamp |
+| DDPI: active but sell not placed | Guide user to place sell order | Liquidity → Order Status |
+| DDPI: inactive | Guide user to activate via app Sell flow | DDPI Status = Inactive |
+| Brokerage / penalty | No brokerage, no penalty. Minor YTM impact (up to ~1%) | — |
+| Sell success rate | 98% success. Funds by T+1 | — |
+| Maturity with no liquidity | Issuer redeems directly. Buyer availability irrelevant | — |
+| Order status and settlement | T+1 EOD. Weekend = next working day | Liquidity → Scheduled_settlement_date, Order Status |
+| Sell amount calculation | Purchase YTM vs selling YTM. Difference = deduction (up to ~1%) | Portfolio (purchase YTM), Liquidity (sell date, YTM) |
+| Cancel sell order | Only if Initiated. Email confirm + raise `#cx-ops` | Liquidity → Order_Status |
+| Payment not received after T+1 | Bank statement via email. Check CMR, IFSC. Raise `#cx-ops` | Liquidity → settlement date, Bank/IFSC, NRE status |
+| NRE account rejection | Confirm NRE. Raise `#cx-ops`. Ops may request new account | KYC / Bank Details |
+| Record date and coupon | Sell after record date = get coupon; before = no coupon | Daily Pricing Sheet, Liquidity → sell date |
+| Select Units screen skips | Pending sell order exists. Wait for settlement | Liquidity → Order Status |
+| Flexi: buyer at maturity | No. Issuer redeems automatically | — |
+| Flexi: no buyers on sell date | Bond continues to final maturity. No loss | Liquidity → Order Status |
+| Flexi: sell before maturity | Yes if buyers available. Check DDPI Active first | Liquidity → DDPI Status, bond type |
+| Flexi: DDPI not signed by sell date | Sell does not execute. Bond runs to final maturity | DDPI status, activation date vs scheduled sell date |

@@ -1,0 +1,257 @@
+---
+title: "RFQ / Buy Order"
+description: "Buy order issues — unit limits, seller mapping, payment failures, bank changes, and the T+3 first-payment framework."
+---
+
+## Cannot purchase more than X units
+
+<Note>
+  **Agent note:** Use the internal bond limits sheet to verify **Max Units** and **Max Investment** per bond before responding.
+</Note>
+
+### Checks and confirmations
+
+<Steps>
+  <Step title="Confirm the bond and attempted order">
+    Check **Finder → RFQ / Order** to view the user's attempted order and bond details.
+  </Step>
+
+  <Step title="Check the limits sheet">
+    Look up Max Units and Max Investment for that bond in the [internal bond limits sheet](https://docs.google.com/spreadsheets/d/12TmlomZD7IKeYFeuklzAa9Q_gi71WaW94ri7EVrBiDg/edit?usp=sharing).
+  </Step>
+
+  <Step title="Check seller mapping">
+    Confirm in **Finder → User Profile** whether the user is a referred user or signed up via the normal flow — this determines seller mapping.
+  </Step>
+
+  <Step title="Explain the cap">
+    Inform the user that each bond has its own unit cap set at the platform level, visible at the time of investment. Limits exist due to high demand and limited availability, to ensure fair access for all investors.
+  </Step>
+</Steps>
+
+**Response to user:**
+
+> I understand that it may feel inconvenient to invest a limited amount, but the investment limit on some bonds is kept to ensure equal investment opportunities for all investors. However, there are many other bonds listed on the platform that do not have this cap. You can explore them here: [https://www.wintwealth.com/bonds/](https://www.wintwealth.com/bonds/)
+
+<Note>
+  If a user tries to access bonds that are 95% or 98% sold, they may not be able to invest more than a certain number of units.
+</Note>
+
+## Different limits across accounts
+
+Users sometimes report they can buy from one account but not another. This is caused by **master seller mapping**.
+
+| Master seller | Assigned to |
+| --- | --- |
+| **Ambium Finserv** | Users who signed up via the normal (non-referral) flow |
+| **Fourdegree Water Services** | Referred users |
+
+Unit availability differs between sellers, which causes purchase limit differences across accounts.
+
+### Checks and confirmations
+
+<Steps>
+  <Step title="Determine referral status">
+    Check **Finder → User Profile**, copy the User ID, then check in Mixpanel: navigate to **Users**, enter the User ID, and search the properties for "referred".
+  </Step>
+
+  <Step title="Check unit availability">
+    If the user is referred, check with `@product-ops` on `#customer-excellence` whether units are still available with Fourdegree Water Services, and whether available units for that seller have been exhausted or are limited.
+  </Step>
+
+  <Step title="Explain to the user">
+    Explain that the purchase limit varies because each account is mapped to a different master seller, and unit availability differs between them. Frame the response based on the user's specific seller mapping.
+  </Step>
+</Steps>
+
+<Warning>
+  **Escalation** — For referred users with unit availability questions, ping `@product-ops` on `#customer-excellence`. Escalation contact: Abhay.
+</Warning>
+
+## Unable to redirect to bank website / payment failing
+
+<Warning>
+  **Known error:** "The requested URL was rejected. Please contact support"
+
+  This is a technical error at the **bank's end** during the payment authorisation step. It is intermittent and may resolve on retry.
+</Warning>
+
+<Steps>
+  <Step title="Get the error details">
+    Ask the user to describe the exact error message or share a screenshot. Check **Finder → Payment Status** for the relevant order to confirm the failure point.
+  </Step>
+
+  <Step title="If it matches the known error">
+    Inform the user it is a bank-end technical issue and ask them to retry after some time or switch to UPI.
+  </Step>
+
+  <Step title="If the error is different">
+    Request a screen recording from the user while they attempt the payment. Check **Finder → RFQ / Order** for the payment gateway used (Razorpay or Cashfree) and note the order ID.
+  </Step>
+
+  <Step title="If redirection fails entirely">
+    If the user cannot be redirected to the bank's website from the app at all, escalate to the email team to raise with the payment gateway.
+  </Step>
+</Steps>
+
+## Payment failed after completing all steps
+
+<Steps>
+  <Step title="Check order details">
+    Go to **Finder → RFQ → Order Details** and check Payment Status, Mode of Payment (Net Banking / UPI), and Gateway (Razorpay / Cashfree).
+  </Step>
+
+  <Step title="Scenario 1 — status is FAILED">
+    Go to the respective payment gateway portal.
+
+    * **Cashfree:** for UPI payments check the valid UPI account. For Net Banking and SIP payments use the `wint_cashfree` profile.
+    * **Razorpay:** use only for net banking payments made via Razorpay.
+
+    Check the reason for failure and refund status if applicable, then inform the user and guide them to retry.
+  </Step>
+
+  <Step title="Scenario 2 — retries still fail">
+    Ask for a screenshot and escalate to the payment gateway via the email team. Pull the **Payment ID** (Razorpay) or **Order ID** (Cashfree) from **Finder → Transactions** for the escalation.
+  </Step>
+</Steps>
+
+<Warning>
+  **Escalation** — Ask `@email` to raise the issue with Cashfree or Razorpay.
+</Warning>
+
+## Using a different bank account for payments
+
+<Warning>
+  Only **one** bank account can be linked to a Wint Wealth account at a time. Only that account can be used to make payments and receive repayments.
+</Warning>
+
+<Steps>
+  <Step title="Check the linked account">
+    Check **Finder → KYC / Bank Details** to view the currently linked bank account.
+  </Step>
+
+  <Step title="Guide the user to update">
+    * **App:** More → Account Details → Bonds Bank Details
+    * **Website:** Profile icon → Account Details → Bonds Bank Details
+  </Step>
+
+  <Step title="Explain the record date impact">
+    * Bank change **before** the record date: upcoming interest is credited to the **new** account.
+    * Bank change **after** the record date: upcoming interest may still be credited to the **old** account.
+
+    Check **Finder → Transactions / Repayment schedule** to identify any upcoming interest payment date and the relevant record date.
+  </Step>
+
+  <Step title="Reassure the user">
+    The bank account change does **not** affect their ability to make new investments. New purchases can be made using the updated account within 24–48 hours of updating.
+  </Step>
+</Steps>
+
+<Info>
+  **Record date explained** — the record date is the cut-off when the registrar checks demat details (including the linked bank) to decide where interest is credited. This is usually **10–15 days** before the actual interest payment date. Always inform the user of this before they change their bank account.
+
+  See [Record date](/product-sop-faq/bonds/record-date).
+</Info>
+
+## Payment modes and supported banks
+
+* Payments can be made via **Net Banking or UPI only**.
+* Investments must be made using an **Indian savings bank account registered in the user's own name** — confirm the account type and name match in **Finder → KYC / Bank Details**.
+* Other payment modes (credit card, wallets, international accounts) are **not supported**.
+
+If a user asks why their specific bank is not available for net banking, check the internal Net Banking availability sheet. If the bank is not listed, inform the user that net banking is not available for their bank and suggest UPI as an alternative.
+
+## Cancelling a buy order
+
+<Warning>
+  Buy orders **cannot** be cancelled once placed. There is currently no provision for cancellation on the platform. Communicate this clearly and empathetically.
+</Warning>
+
+Verify the order exists and its current status in **Finder → RFQ / Order** (Pending / Placed / Settled), inform the user, and document the feedback if they are persistent.
+
+## Status of first buy order (first payment)
+
+<Steps>
+  <Step title="Check KYC status">
+    KYC must be approved, UCC active and approved, and all statuses active. Check **Finder → KYC Status** tab.
+  </Step>
+
+  <Step title="Calculate working days">
+    Check the payment date (Day T) and calculate working days since payment via **Finder → Transactions**.
+  </Step>
+
+  <Step title="Scenario 1 — payment successful and KYC approved within T+3">
+    Inform the user the order is placed and will settle on the standard T+1 cycle. Confirm order status in **Finder → RFQ / Order**.
+  </Step>
+
+  <Step title="Scenario 2 — KYC not approved within T+3">
+    Inform the user the transaction cannot be processed further. Confirm the KYC approval date against the payment date to determine whether T+3 was breached.
+
+    If a refund is applicable, inform the user the payment will be refunded within **5–7 working days**. Check **Finder → Transactions** for refund status.
+  </Step>
+
+  <Step title="If refund not received within SLA">
+    Escalate to NSE Clearing — contacts: [dmitra@nse.co.in](mailto:dmitra@nse.co.in) and [cbclearing@nsccl.co.in](mailto:cbclearing@nsccl.co.in).
+  </Step>
+</Steps>
+
+### T+3 first payment framework
+
+| Day | What happens |
+| --- | --- |
+| **Day T** | Payment made. UCC must be active and KYC approved. |
+| **T+1 to T+2** | System runs KRA and AML checks. |
+| **T+3** | If KRA and AML pass, the trade is placed on the exchange. |
+| **T+3 (fail)** | If KRA/AML not completed, the order is marked for refund. |
+| **T+4 (after 2 PM)** | Order marked `REFUND_INITIATED`. |
+| **T+5** | Refund credited to the user's bank account. |
+
+## KYC and onboarding framework (NCL UPI payments)
+
+A first-time user submits five key details: **Aadhaar, PAN, Bank Details, Selfie, and Account Opening Form (AOF)**.
+
+| Check | Condition | Result |
+| --- | --- | --- |
+| **Auto-check (green light)** | All 5 details approved automatically by the system | Insta Demat created, Insta Payment activated, user can invest using UPI / Net Banking |
+| **Auto-check failed (red light)** | Any mismatch (blurry photo, name mismatch) or any of the 5 KYC steps in Rejected state | KYC status set to Pending, case sent to the Ops team for manual verification |
+
+Check the KYC steps header in Finder under the **SEBI KYC** section.
+
+**Ops team outcomes:**
+
+* **Approval** — Ops agent opens the Pending KYC queue, verifies documents manually, and marks Approved. The user moves to green light status and can make a payment.
+* **Rejection** — an error is found or documents need correction. The user is marked rejected with a specific reason tag (for example "Blurry PAN") and notified via email to resubmit the specific missing or incorrect field.
+
+## Buy order taking longer than T+1 to settle
+
+Confirm whether the user is a referred user or signed up via the normal flow — check **Finder → User Profile → Referral Status**. Referred users settle on T+2 until the ₹5k reward is exhausted.
+
+## Quick reference
+
+| IR type | Key action | Finder check |
+| --- | --- | --- |
+| Unit limit query | Check internal limits sheet; explain bond cap | RFQ / Order, User Profile (referral status) |
+| Different limits across accounts | Check seller mapping (Ambium vs Fourdegree); ping `@product-ops` | User Profile → Referral Status, RFQ section |
+| Payment redirect failure | Known URL error → retry/switch; raise case with 10–15d SLA | Payment Status, gateway used |
+| Payment failed | Check gateway; share reason; raise case with 10–15d SLA | RFQ → Order Details, Payment Status, gateway |
+| Change bank account | Guide via app/website; explain record date impact | KYC / Bank Details, repayment schedule |
+| Payment modes and banks | Net Banking / UPI only; check internal bank availability sheet | KYC / Bank Details |
+| Cancel buy order | No cancellation — inform clearly | Confirm order status only |
+| Settlement > T+1 | Check referral; T+2 until ₹5k reward exhausted | User Profile → Referral Rewards balance |
+| First order status | Apply T+3 KYC framework; refund if T+3 breached | KYC Status, UCC, payment date, RFQ Order |
+| NCL KYC eligibility | Green = invest; Red = Ops queue | Finder → SEBI KYC section |
+| NCL refund | Principal: NCL → user, 5–7 WD. Brokerage: NCL → Wint → user, 3–4 WD | Finder → Transactions, refund status |
+| UCC deletion / cooling period | T+5 WD from payment; blocked until 12:00 PM on deletion day | Finder → UCC status, payment date |
+| Any unresolved payment case | Raise case, share complaint ID, inform 10–15d SLA, email updates | Finder → Transactions, previous tickets |
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="NCL Refund" href="/process-sop-faq/ncl-refund">
+    Refund framework, brokerage refunds, and UCC cooling period.
+  </Card>
+
+  <Card title="Payment Gateway" href="/tools-and-systems/payment-gateway">
+    Razorpay and Cashfree walkthroughs.
+  </Card>
+</CardGroup>

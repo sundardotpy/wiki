@@ -97,6 +97,8 @@
             "group": "Bonds",
             "pages": [
               "product-sop-faq/bonds",
+              "product-sop-faq/bonds/sell-charges",
+              "product-sop-faq/bonds/basics-of-bonds",
               "product-sop-faq/bonds/accrued-interest",
               "product-sop-faq/bonds/pricing",
               "product-sop-faq/bonds/record-date",
@@ -110,13 +112,15 @@
               "product-sop-faq/flexi",
               "product-sop-faq/flexi/flexi-tenure-bond",
               "product-sop-faq/flexi/what-happends-if-ddpi-note-signed-in-flexi-tenure-bonds",
-              "product-sop-faq/flexi/untitled-page"
+              "product-sop-faq/flexi/untitled-page",
+              "product-sop-faq/flexi/flexi-tenure-checks"
             ]
           },
           {
             "group": "Liquidity",
             "pages": [
               "product-sop-faq/liquidity",
+              "product-sop-faq/liquidity/liquidity-process",
               "product-sop-faq/liquidity/how-to-check-user-signed-ddpi",
               "product-sop-faq/liquidity/what-to-do-when-finder-shows-ddpi-initiated-but-user-saying-it-showed-an-error"
             ]
@@ -196,7 +200,8 @@
             "pages": [
               "product-sop-faq/wint-portfolio-dashboard"
             ]
-          }
+          },
+          "product-sop-faq/recommended-tag"
         ]
       },
       {
@@ -237,7 +242,8 @@
           "process-sop-faq/ncl-refund",
           "process-sop-faq/repayment",
           "process-sop-faq/tds",
-          "process-sop-faq/slack-channels"
+          "process-sop-faq/slack-channels",
+          "process-sop-faq/rfq-buy-order"
         ]
       },
       {

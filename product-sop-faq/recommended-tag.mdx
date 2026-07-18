@@ -1,0 +1,105 @@
+---
+title: "Recommended tag"
+description: "Internal spec for the personalised 'Recommended' bond tag shown to first-time investors."
+---
+
+<Warning>
+  **Internal product spec.** This documents the logic behind the "Recommended" tag for context. Do not share scoring logic or parameter weights with users.
+</Warning>
+
+## Problem statement
+
+Many users face decision paralysis when choosing their first bond. The **Recommended** tag was validated through an A/B experiment showing an **8% increase in first investments**. The next step is a questionnaire and scoring logic to define personalised recommendations for first-time users.
+
+## Objectives
+
+* Introduce a **Recommended** tag on bond cards across the homepage and listing pages
+* Take input from users during onboarding to define logic and show personalised recommendations
+* Increase conversion of first-time investors into their first investment
+* Test at a bond-specific level to evaluate which types of bonds perform better when marked as recommended
+
+## Eligibility
+
+<Note>
+  Recommendations are only visible to users with **zero existing investments** — that is, first-time investors.
+</Note>
+
+## Input parameters
+
+Inputs are collected during onboarding via KYC on the **Basic Info** page.
+
+| Parameter | Options shown to users | Input captured |
+| --- | --- | --- |
+| Age | Taken from PAN date of birth | Age |
+| Time and purpose of investment | Long term / Short term | Long term / Short term |
+| Income details | &lt;1 LPA, 1–5 LPA, 5–10 LPA, 10–25 LPA, &gt;25 LPA | 0–10 LPA, 10–25 LPA, &gt;25 LPA |
+| Existing investments | No experience, &lt;1 year, 1–5 years, &gt;5 years | Yes / No |
+| Risk appetite / tolerance | High / Low | High / Low |
+| Liability / borrowing | Yes / No | Yes / No |
+
+## Scoring
+
+All parameters feed into two scores.
+
+### Total Risk Score
+
+Contributing parameters and their percentage contribution (configurable):
+
+| Parameter | Contribution | Source |
+| --- | --- | --- |
+| Risk appetite / tolerance | 50% | New input — "High Risk, High Returns" or "Low Risk, Moderate Returns" |
+| Income details | 20% | Income brackets already captured on Basic Details |
+| Age | 10% | Derived from PAN / Aadhaar date of birth |
+| Existing investments | 10% | New input with years-of-experience brackets; logic considers only Yes or No |
+| Liability / borrowing | 10% | New input, Yes or No |
+
+Bonds are shown in decreasing order of returns, prioritising bond rating from high to low within each range.
+
+### Total Tenure Score
+
+Contributing parameter: time and purpose of investment (new input from the Basic Details page).
+
+<Note>
+  The Tenure Score is **not in use** currently.
+</Note>
+
+## Selection rules
+
+Users are recommended a bond from the defined brackets based on their Risk Score, subject to these tie-breakers:
+
+1. If two bonds have the **same rating**, the bond with the **higher returns** is recommended.
+2. If two bonds have the same rating **and** the same returns, the bond with the **shorter tenure** is recommended.
+3. If no bond exists in a bracket, the first **higher-rated** bond is shown.
+4. If no bond exists up to the highest rated bond (**AA**) following the above logic, **no bond is recommended**.
+
+## Exceptions
+
+* Only bonds with a ticket size of **₹10K** should be recommended — exclude ₹1K and ₹1L tickets.
+* The recommended bond is shown **second** in the priority list, after the Hero Bond.
+* The **Hero Bond should never be recommended**. If the recommended card is the hero card, show it second in priority with the recommended tag.
+* Exclude **PTCs** and **MLD** bonds.
+
+## Why page
+
+Content shown on the Recommended tag explainer:
+
+* **Static tile** — "Skin in the Game"
+* **Dynamic tiles:**
+  1. Risk / Returns — Low Risk, High Return
+  2. Second tile based on metric priority:
+     1. Repayments (principal and interest) if ≥ ₹10 Cr
+     2. Total investments on Wint if ≥ ₹100 Cr
+     3. Number of investors if ≥ 10,000
+     4. Else show "Zero defaults"
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Bonds" href="/product-sop-faq/bonds">
+    Bond product knowledge.
+  </Card>
+
+  <Card title="Basics of bonds" href="/product-sop-faq/bonds/basics-of-bonds">
+    Ratings, risk, and bond types referenced by this logic.
+  </Card>
+</CardGroup>

@@ -1,0 +1,76 @@
+---
+title: "Flexi-tenure checks in Finder"
+description: "How to verify Flexi-bond tenure details in Finder and trace tenure extensions in Mixpanel."
+---
+
+Use this page to verify Flexi-bond details internally. For the user-facing explanation of the product, see [Flexi-tenure bond](/product-sop-faq/flexi/flexi-tenure-bond).
+
+## If the order is settled
+
+**Check path in Finder:** Finder → **Bond Transactions** → **Buy / Sell**
+
+### Fields to check
+
+| Field | Description |
+| --- | --- |
+| **Original Tenure** | The actual tenure selected by the user at the time of investment |
+| **Current Tenure** | The currently active tenure applicable for the bond |
+| **Sell Price Per Unit** | The sell price applicable per unit of the bond |
+| **Expected Sell Date** | The date on which the sell order will be initiated as per the selected tenure |
+
+<Warning>
+  **Internal note — not to be shared with users**
+
+  * If **Original Tenure** and **Current Tenure** show the **same** tenure, the Flexi-Bond tenure has **not** been extended.
+  * If **Original Tenure** shows a shorter tenure and **Current Tenure** shows **"Maturity"**, the tenure **has** been extended and the bond will continue until maturity. In this case **no sell order will be placed** on the Expected Sell Date.
+</Warning>
+
+## If the order is not settled
+
+**Check path in Finder:** Finder → **RFQ Section** → **Tenure Column**
+
+Any tenure other than **Maturity** in the Tenure column indicates a Flexi-tenure bond.
+
+## Finding when the tenure was extended to maturity
+
+Use Mixpanel to trace the extension event.
+
+<Steps>
+  <Step title="Select the view">
+    Open Mixpanel and select the **Wint Wealth - Production** view at the top-left.
+  </Step>
+
+  <Step title="Go to Events">
+    Go to **Events**, then click **All Events**.
+  </Step>
+
+  <Step title="Search the event">
+    Search for the event: `Flexi-tenure Maturity Extended`.
+  </Step>
+
+  <Step title="Open the filter">
+    After selecting the event, click the three horizontal dots beside it, then click **Filter**.
+  </Step>
+
+  <Step title="Filter by user">
+    Under Filters, add the **User ID** of the concerned user to fetch the respective event details.
+  </Step>
+</Steps>
+
+<Note>
+  Ensure the correct **date range** is selected before running the event search.
+</Note>
+
+Once the event is fetched, the details show the product, the date on which the tenure was extended, and the **Updated By** field — which indicates whether the extension was completed by the user or from the backend.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Flexi-tenure bond" href="/product-sop-faq/flexi/flexi-tenure-bond">
+    What the product is and how it behaves for users.
+  </Card>
+
+  <Card title="Mixpanel" href="/tools-and-systems/mixpanel">
+    Other Mixpanel lookups.
+  </Card>
+</CardGroup>

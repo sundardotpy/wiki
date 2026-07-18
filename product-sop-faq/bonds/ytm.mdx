@@ -1,8 +1,64 @@
 ---
 title: "YTM"
-description: "YTM — placeholder page."
+description: "Yield to maturity and XIRR — what they mean and how they reflect true return."
 ---
 
+## What is yield?
+
+**Yield**, often referred to as **YTM** (Yield to Maturity) or **XIRR** (Extended Internal Rate of Return), reflects the actual annual return earned by the investor. It factors in:
+
+* The purchase price
+* The timing of cash flows
+* The maturity value
+
+This is different from the **coupon rate**, which is simply the fixed interest rate applied to the face value. Yield represents the *true* return earned; the coupon rate only describes the interest payments.
+
+## YTM and amortised bonds
+
+For [amortised bonds](/product-sop-faq/bonds/basics-of-bonds), the outstanding principal decreases over time, so the absolute interest amount received also decreases. The interest **rate** itself does not change.
+
+The XIRR shown on Wint Wealth already factors in this amortisation pattern and gives a true annualised return figure accounting for the timing and size of each cash flow.
+
 <Info>
-  This page is a placeholder. Content has not been written yet.
+  The declining interest amount in amortised bonds is **not** a reduction in returns — it reflects that part of the principal has already been returned. XIRR remains consistent with what was promised at the time of investment.
 </Info>
+
+## YTM impact when selling early
+
+When a bond is sold before maturity through the secondary market, it may be sold at a YTM up to **1% lower** than the original purchase YTM.
+
+<Steps>
+  <Step title="Baseline">
+    The investor's effective buy YTM is used as the baseline.
+  </Step>
+
+  <Step title="Applicable selling YTM">
+    At the time of selling, the applicable selling YTM is determined.
+  </Step>
+
+  <Step title="Price adjustment">
+    The sell price is adjusted so the final return matches that selling YTM.
+  </Step>
+</Steps>
+
+<Info>
+  **Example** — A bond bought at an effective YTM of 11.75% and sold before maturity may be sold at an adjusted YTM of 10.75% — an impact of up to 1% on effective YTM. The final sell amount may therefore be lower than if the bond were held to maturity.
+</Info>
+
+This adjustment only affects the **interest component** — the principal is not impacted. Users can always view the exact sell price and applicable YTM before confirming a sell order.
+
+## Negative or incorrect YTM on the dashboard
+
+If a user reports a wrong or negative YTM percentage on their dashboard, see [Wint Portfolio Dashboard](/product-sop-faq/wint-portfolio-dashboard) for the Finder checks and escalation path.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Sell charges" href="/product-sop-faq/bonds/sell-charges">
+    Charges, brokerage, and YTM deduction when selling early.
+  </Card>
+
+  <Card title="Pricing" href="/product-sop-faq/bonds/pricing">
+    Face value, clean and dirty price, and acquisition cost.
+  </Card>
+</CardGroup>

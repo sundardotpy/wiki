@@ -1,8 +1,40 @@
 ---
 title: "Demat closure"
-description: "Demat closure — placeholder page."
+description: "Issuing an account closure letter and handling closure-related requests."
 ---
 
-<Info>
-  This page is a placeholder. Content has not been written yet.
-</Info>
+## Account closure letter
+
+**Response to user:**
+
+> We will arrange your account closure letter and email it to you once it is ready. Please allow some time for processing.
+
+### Checks and confirmations
+
+<Steps>
+  <Step title="Raise the request with Ops">
+    Raise a request in `#cx-ops` and share the user's registered details.
+
+    Channel: `#cx-ops` | Include: user name, mobile number, User ID
+  </Step>
+
+  <Step title="Send the letter to the user">
+    Once received from Ops, email the closure letter to the user's registered email address.
+  </Step>
+</Steps>
+
+<Note>
+  Users are identified by their registered name, mobile number, and User ID — confirm all three in Finder before raising the request.
+</Note>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Account deletion" href="/product-sop-faq/wint-account/account-deletion">
+    Deleting a Wint Wealth account, including duplicate-account scenarios.
+  </Card>
+
+  <Card title="KYC Modification" href="/process-sop-faq/kyc-modification">
+    Signing errors on closure and other KYC forms.
+  </Card>
+</CardGroup>

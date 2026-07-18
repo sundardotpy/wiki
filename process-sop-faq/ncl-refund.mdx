@@ -1,8 +1,96 @@
 ---
 title: "NCL Refund"
-description: "NCL Refund — placeholder page."
+description: "NCL refund framework for failed orders, including brokerage refunds and the UCC cooling period."
 ---
 
+This applies when an order is marked `REFUND_INITIATED` on T+4 (after 2 PM). Payments made via UPI go directly to NCL (NSE Clearing Ltd), so refunds follow NCL's cycle rather than the payment gateway's.
+
+## Standard refund (principal amount)
+
+| Field | Detail |
+| --- | --- |
+| Source | NCL (NSE Clearing Ltd) |
+| Destination | User's bank account |
+| SLA | 5–7 working days |
+
+## Brokerage refund (special case)
+
+<Warning>
+  NCL does **not** refund brokerage directly to the user. The brokerage portion is returned to Wint Wealth first, and Wint Wealth then refunds the user.
+</Warning>
+
+If the first payment was not made within the first 7 days of sign-up (or on an applicable offer day), the investor will have paid brokerage alongside the investment amount. In those cases the following loop applies:
+
+| Step | From → To | Action |
+| --- | --- | --- |
+| Detection | System | Identifies a failed order where brokerage was paid (user not on the 7-day waiver, or no brokerage discount applied). |
+| Step A | NCL → Wint Wealth | NCL refunds the brokerage portion to Wint Wealth, not to the user. |
+| Step B | Internal verification | Divyansh verifies brokerage refund cases. Once the investment amount refund is confirmed, Wint Wealth refunds brokerage within 3–4 working days. |
+| Step C | Wint Wealth → User | User receives an email from [hello@wintwealth.com](mailto:hello@wintwealth.com) with UTR details confirming the brokerage refund. |
+
+## T+3 order processing framework
+
+UCC must be created within T+3 days after payment, post-KYC approval. If the UCC is missing, money cannot be mapped to the user and the order cannot be settled.
+
+| Timeline | System state | Process check |
+| --- | --- | --- |
+| Day T (payment day) | Payment received | Investment &lt; ₹2 lakh? Payment mode = UPI? UCC created and active? (all must be yes) |
+| Day T+1 to T+2 | Processing | System pushes data for KRA (KYC Registration Agency) and AML checks. |
+| Day T+3 (deadline) | Final verification | If KRA and AML are created successfully, the trade is placed on the exchange. If not, the order is marked for refund. |
+| Day T+4 (after 2 PM) | Failure confirmation | System marks order `REFUND_INITIATED`. Refund processed the next working day. |
+| Day T+5 | Refund settlement | User receives the refund in their bank account. |
+
+## UCC deletion and re-payment (cooling period)
+
+Applies when a user's payment was made but KYC / demat creation failed within T+3. The failed UCC must be purged before the user can attempt a new payment.
+
+| System state | Condition | Result |
+| --- | --- | --- |
+| Trigger event | Payment made (Day T) but KYC / demat failed within T+3 | Order marked failed. Refund initiated via existing UCC mapping. UCC delete scheduled at T+5 working days from the payment date. |
+| Wait period | Current date &lt; UCC delete scheduled date | User is **blocked** and cannot make a new payment. Failed UCC still active in the backend clearing system. |
+| Deletion event | Current date = UCC delete scheduled date (~12:00 PM) | Failed UCC permanently deleted from the exchange / clearing system. User profile cleared for a fresh start. |
+| Re-payment window | Current date = UCC delete scheduled date (after 12:30 PM) | User is **unblocked** and can complete KYC again and make a fresh payment. |
+
 <Info>
-  This page is a placeholder. Content has not been written yet.
+  **Practical example — UCC deletion timeline**
+
+  * **Payment date (Day T):** Jan 20 (Tuesday) — user pays ₹50,000 but the order fails due to a name mismatch.
+  * Jan 21 (Wed) WD 1 | Jan 22 (Thu) WD 2 | Jan 23 (Fri) WD 3
+  * Jan 24–25 (Sat–Sun) weekend | Jan 26 (Mon) Republic Day — non-working
+  * Jan 27 (Tue) WD 4 | Jan 28 (Wed) WD 5 — UCC deleted at 12:00 PM
+  * After 12:30 PM on Jan 28 the user can retry, submit correct KYC, and make a fresh payment.
 </Info>
+
+## Payment resolution process
+
+<Warning>
+  This process applies to **all** unresolved payment cases raised by users. Always communicate the 10–15 day resolution window at the time of raising the case.
+</Warning>
+
+**Standard communication template:**
+
+> Your case has been raised with the concerned partner and a complaint ID has been generated. Similar cases typically take around 10–15 days to get resolved. We will continue to follow up with the concerned team and keep you updated over email within the committed timelines until the issue is resolved.
+
+### Key rules for agents
+
+* Always inform the user of the 10–15 day resolution window when raising the case.
+* Share the complaint ID with the user as confirmation the case has been logged.
+* Assure the user that regular updates will be shared over email until resolution.
+* Do **not** tag Asset POCs for status updates unless the defined deadline has passed.
+* Check the relevant thread for exact timelines applicable to each case type.
+
+<Warning>
+  **Internal only — do not share with the user:** if the partner or entity does not resolve the issue within the defined timeline, Wint Wealth will pay the customer directly. This commitment must not be communicated to the user.
+</Warning>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="RFQ / Buy Order" href="/process-sop-faq/rfq-buy-order">
+    Buy order failures, payment issues, and the T+3 first-payment framework.
+  </Card>
+
+  <Card title="NCL refund cases" href="/resources/ncl-refund-cases">
+    Tracker of individual NCL refund cases.
+  </Card>
+</CardGroup>

@@ -1,8 +1,42 @@
 ---
 title: "MSG91"
-description: "MSG91 — placeholder page."
+description: "SMS gateway used for OTP delivery — checking delivery reports and escalating failures."
 ---
 
-<Info>
-  This page is a placeholder. Content has not been written yet.
-</Info>
+MSG91 is the SMS gateway Wint Wealth uses to deliver OTPs to users' mobile numbers. Agents use the MSG91 dashboard to investigate SMS delivery failures during login.
+
+## When to use MSG91
+
+Check MSG91 when a user reports they are **not receiving an OTP on their mobile number**, and you have already worked through the standard troubleshooting in [Login & OTP](/product-sop-faq/wint-account/login-and-otp):
+
+* The user has confirmed they are **inside India** (mobile OTP is only delivered to Indian numbers)
+* Network delay, DND registration, incorrect number, and carrier restrictions have all been ruled out
+* Resetting the OTP in Finder did not resolve it
+
+<Warning>
+  Checking delivery reports is an **internal** step. Do not share dashboard details with the user.
+</Warning>
+
+## Checking delivery reports
+
+Open the MSG91 dashboard and look up the delivery report for the user's mobile number to see details on the failed delivery — whether the message was submitted, accepted by the carrier, or rejected.
+
+## Escalation
+
+<Warning>
+  If the delivery report does not resolve the issue, **raise to TL immediately**. Do not attempt further troubleshooting on your own.
+
+  The TL sends an email to the MSG91 team with the user's details and the issue summary for further investigation.
+</Warning>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Login & OTP" href="/product-sop-faq/wint-account/login-and-otp">
+    Full OTP troubleshooting flow before reaching MSG91.
+  </Card>
+
+  <Card title="Tools & Systems" href="/tools-and-systems/finder">
+    Other internal tools.
+  </Card>
+</CardGroup>

@@ -1,8 +1,68 @@
 ---
 title: "Account deletion"
-description: "Account deletion"
+description: "Deleting a Wint Wealth account, including duplicate-account scenarios."
 ---
 
-<Info>
-  This page is a placeholder. Content has not been written yet.
-</Info>
+## When account deletion applies
+
+Account deletion most commonly comes up when a user has ended up with **two accounts** and needs to consolidate. Wint Wealth allows only one account per set of KYC credentials — once PAN, Aadhaar, and bank details are linked to an account they cannot be reused, and each mobile number and email ID can only be associated with one account.
+
+If a user hits an "Aadhaar / PAN already linked to another account" error during KYC, work through [KYC Modification](/process-sop-faq/kyc-modification) first to trace the existing account.
+
+## Deciding which account to keep
+
+Once the user has verified the existing account, they choose:
+
+<CardGroup cols={2}>
+  <Card title="Keep the new account">
+    The old account is deleted. Once deleted, the user can complete KYC on the new account.
+  </Card>
+
+  <Card title="Keep the existing account">
+    The user logs in with the mobile number registered on the old account and deletes the new account they were creating, then completes KYC on the existing account.
+  </Card>
+</CardGroup>
+
+<Warning>
+  Two active accounts cannot exist with the same Aadhaar, PAN, and bank details. The support team assists with deletion once the user has decided which account to keep.
+</Warning>
+
+## Account closure letter
+
+If the user needs a formal closure letter:
+
+**Response to user:**
+
+> We will arrange your account closure letter and email it to you once it is ready. Please allow some time for processing.
+
+<Steps>
+  <Step title="Raise with Ops">
+    Raise the request in `#cx-ops` with the user's registered name, mobile number, and User ID.
+  </Step>
+
+  <Step title="Email the letter">
+    Once received from Ops, email the closure letter to the user.
+  </Step>
+</Steps>
+
+See [Demat closure](/process-sop-faq/demat-closure) for the full closure-letter process.
+
+## Signing errors on the closure form
+
+If the user hits an error while signing the Account Closure form, confirm they are signing with **their own** Aadhaar, and follow the signing-error flow in [KYC Modification](/process-sop-faq/kyc-modification).
+
+<Warning>
+  **Escalation** — Channel: `#bond-kyc-discrepancies` | POC: `@cx-TL`
+</Warning>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="How to check if Account is deleted" href="/tools-and-systems/finder/how-to-check-if-account-is-deleted">
+    Finder walkthrough for verifying deletion status.
+  </Card>
+
+  <Card title="Demat closure" href="/process-sop-faq/demat-closure">
+    Issuing the account closure letter.
+  </Card>
+</CardGroup>

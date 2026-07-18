@@ -1,8 +1,180 @@
 ---
 title: "KYC Modification"
-description: "KYC Modification — placeholder page."
+description: "Scenario-based handling for common KYC errors raised by users during onboarding."
 ---
 
-<Info>
-  This page is a placeholder. Content has not been written yet.
-</Info>
+This page covers scenario-based situations that users commonly raise with the support team during the KYC process. It is intended for support agents and for bot training.
+
+## Scenario 1 — Button is not working / unable to proceed
+
+**Issue:** The user says a button in the KYC flow is not responding.
+
+**Response to user:**
+
+> We apologise for the inconvenience. This can happen due to temporary network or server issues. Please try the following steps:
+>
+> 1. Switch networks — toggle between Wi-Fi and mobile data
+> 2. Refresh or restart the app
+> 3. Wait a few minutes and try again
+> 4. Try on a different device
+>
+> If the issue still persists, please share a screenshot or screen recording of the error so we can investigate further.
+
+<Note>
+  **Agent note:** If the issue continues after the user has tried all the above steps, raise it on the CX Internal Coordination channel along with the screenshot or screen recording shared by the user.
+</Note>
+
+## Scenario 2 — Aadhaar / PAN is already linked to another account
+
+**Issue:** The user sees an error saying their Aadhaar or PAN is already mapped to another Wint Wealth account.
+
+**Response to user:**
+
+> This error means that the Aadhaar number you entered during KYC is already linked to an existing Wint Wealth account. Wint Wealth allows only one account per set of KYC credentials. Once your PAN, Aadhaar, and bank details are linked to an account, they cannot be reused on a different account. Each mobile number and email ID can also only be associated with one account.
+>
+> To help you resolve this, please confirm the Aadhaar number you entered during KYC. Once we trace the existing account, we will share the last 4 digits of the mobile number linked to it so you can verify whether you recognise it.
+
+After verification, the user must decide which account to keep:
+
+<CardGroup cols={2}>
+  <Card title="Keep the new account">
+    The old account will need to be deleted. Once deleted, the user can complete KYC on the new account.
+  </Card>
+
+  <Card title="Keep the existing account">
+    The user logs in with the mobile number registered on the old account and deletes the new account being created, then completes KYC on the existing account.
+  </Card>
+</CardGroup>
+
+Two active accounts cannot exist with the same Aadhaar, PAN, and bank details.
+
+<Note>
+  **Agent note:** Ask the user to confirm their Aadhaar number first and use it to trace the existing account internally. Share **only the last 4 digits** of the linked mobile number with the user. Assist with account deletion once the user decides which account to keep.
+</Note>
+
+## Scenario 3 — PAN and Aadhaar are not linked
+
+**Issue:** KYC is failing because the user's PAN and Aadhaar are not linked.
+
+**Response to user:**
+
+> As per SEBI regulations, linking your PAN with Aadhaar is mandatory to complete KYC for investing in bonds. This is a regulatory requirement that ensures accurate identity verification and prevents duplication.
+>
+> To link your PAN and Aadhaar, please visit the official Income Tax portal: [https://eportal.incometax.gov.in/iec/foservices/#/pre-login/bl-link-aadhaar](https://eportal.incometax.gov.in/iec/foservices/#/pre-login/bl-link-aadhaar)
+
+<Steps>
+  <Step title="Enter your details">
+    Visit the portal and enter your PAN and Aadhaar details.
+  </Step>
+
+  <Step title="Complete the linking">
+    Follow the on-screen instructions to complete the linking.
+  </Step>
+
+  <Step title="Note the acknowledgement">
+    Submit the request and note the acknowledgement number.
+  </Step>
+
+  <Step title="Verify the status">
+    Verify the linking status after a few hours if it does not reflect immediately.
+  </Step>
+</Steps>
+
+The linking process is usually instant but may take a few hours in some cases. Once linked, the user can return to Wint Wealth and retry KYC.
+
+<Note>
+  **Agent note:** No internal escalation needed. Guide the user to the Income Tax portal and ask them to retry KYC after the linking is confirmed.
+</Note>
+
+## Scenario 4 — PAN and Aadhaar are linked but the error persists
+
+**Issue:** The user says their PAN and Aadhaar are already linked but KYC still shows a related error.
+
+**Response to user:**
+
+> We understand this can be frustrating. To help us investigate, could you please share a screenshot from the Aadhaar portal showing that your PAN and Aadhaar are successfully linked?
+
+<Note>
+  **Agent note:** Once the user shares the screenshot confirming the linking, raise the issue on the CX Internal Coordination channel along with the screenshot for further investigation.
+</Note>
+
+## Scenario 5 — Date of birth mismatch error
+
+**Issue:** The date of birth on the user's Aadhaar and PAN do not match.
+
+**Response to user:**
+
+> Your date of birth must match exactly on both your Aadhaar and PAN for KYC to proceed. If there is a mismatch, you will need to correct it through the respective official portals:
+>
+> * **Aadhaar correction:** UIDAI portal — [https://uidai.gov.in](https://uidai.gov.in)
+> * **PAN correction:** Income Tax portal — [https://www.incometax.gov.in](https://www.incometax.gov.in)
+>
+> Please retry your KYC only after the correction has been completed and updated in the official records.
+
+<Note>
+  **Agent note:** No internal escalation needed. Advise the user to make the correction and retry KYC once records are updated.
+</Note>
+
+## Scenario 6 — Selfie not going through / inappropriate image error
+
+**Issue:** The user's selfie is being rejected during KYC.
+
+**Response to user:**
+
+> Please recapture your selfie keeping the following in mind:
+>
+> * Ensure your full face is clearly visible
+> * Use appropriate attire — avoid caps, sunglasses, or face coverings
+> * Make sure there is adequate lighting with no shadows on your face
+> * Use a plain background if possible
+>
+> KYC can only proceed with a compliant image. Please try again after making these adjustments.
+
+<Note>
+  **Agent note:** If the user continues to face issues after recapturing under the correct conditions, raise it on the CX Internal Coordination channel with a screenshot.
+</Note>
+
+## Scenario 7 — Capture button not working during selfie / liveliness check
+
+**Issue:** The capture button is not activating during the selfie or liveliness check step.
+
+**Response to user:**
+
+> The capture button activates automatically once all face recognition and liveliness check conditions are met. Please ensure the following:
+>
+> 1. You have a stable internet connection
+> 2. Hold your phone parallel to your face — not below eye level
+> 3. Use a plain background, appropriate attire, and good lighting with no shadows
+> 4. Complete the liveliness check by slowly moving your head up and down, then left and right, while facing the camera
+>
+> Once all these conditions are met, the button will activate on its own.
+
+<Note>
+  **Agent note:** If the button still does not activate after the user has followed all the steps, raise it on the CX Internal Coordination channel with a screen recording if possible.
+</Note>
+
+## Signing errors on KYC forms
+
+If a user hits an error while signing a KYC-related form:
+
+<Steps>
+  <Step title="Get the error details">
+    Ask for an error screenshot, or ask the user to describe the error message.
+  </Step>
+
+  <Step title="Confirm the form type">
+    DDPI, Form 121, Nominee, Bank Change, or Account Closure.
+  </Step>
+
+  <Step title="Confirm whose Aadhaar is being used">
+    Confirm the user is signing with **their own** Aadhaar. A common error on nominee forms is users entering the nominee's Aadhaar instead of their own.
+  </Step>
+
+  <Step title="Handle PAN/Aadhaar name mismatch">
+    Ask the user to email a self-attested copy of both PAN and Aadhaar to [hello@wintwealth.com](mailto:hello@wintwealth.com). Once received, transfer the chat to bot, share details in `#bond-kyc-discrepancies` and tag `@cx-TL`.
+  </Step>
+</Steps>
+
+<Warning>
+  **Escalation** — Channel: `#bond-kyc-discrepancies` | POC: `@cx-TL` | PM: Hrithik
+</Warning>
