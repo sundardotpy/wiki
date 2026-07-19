@@ -269,8 +269,8 @@
     ]
   },
   "logo": {
-    "light": "/images/icon.png",
-    "dark": "/images/icon.png"
+    "light": "/images/WintLogoLight.svg",
+    "dark": "/images/WintLogoDark.svg"
   },
   "navbar": {
     "links": [
@@ -296,11 +296,6 @@
       "cursor",
       "vscode"
     ]
-  },
-  "footer": {
-    "socials": {
-      "website": "https://www.wintwealth.com/bonds/listing"
-    }
   },
   "background": {
     "decoration": "grid"
