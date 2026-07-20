@@ -1,8 +1,167 @@
 ---
 title: "PTC"
-description: "PTC — placeholder page."
+description: "Pass-Through Certificates — what they are, how they work, taxation, and the safety comforts that protect investors."
 ---
 
+## Why PTC on the platform?
+
+Wint Wealth was founded to democratise debt investments in India. The goal is to bring a variety of debt products onto the platform, letting investors diversify across issuers and instruments and access opportunities traditionally out of reach for retail investors. PTC is one such instrument.
+
+## What is a PTC? How is it different from a bond?
+
+A **PTC (Pass-Through Certificate)** is a debt instrument that lets you earn returns from a **pool of loans**, by passing borrower repayments directly to you as an investor.
+
+| | Bond | PTC |
+| --- | --- | --- |
+| What you're backed by | A single company / bank / NBFC | A pool of loans from many borrowers |
+| Where returns come from | That one issuer's fixed interest payments | Repayments collected from many borrowers |
+| Key risk | Depends only on that single issuer's ability to repay | Spread across many borrowers, which helps reduce risk |
+
+Because a PTC's returns come from many borrowers instead of relying on just one, the risk is diversified across the pool.
+
+## How does a PTC work?
+
+<Steps>
+  <Step title="Loans are originated">
+    A bank or NBFC (the **originator**) gives loans to many borrowers — home, car, or business loans.
+  </Step>
+
+  <Step title="Loans are pooled">
+    The originator bundles a set of these loans into a **cover pool**.
+  </Step>
+
+  <Step title="Pool is sold to an SPV">
+    The loan pool is sold to a **Special Purpose Vehicle (SPV)** or trust, created only to hold these loans and issue PTCs.
+  </Step>
+
+  <Step title="PTCs are issued">
+    The SPV issues Pass-Through Certificates to investors. Each certificate represents the right to receive repayments from the underlying loan pool.
+  </Step>
+
+  <Step title="Investors fund the SPV">
+    Investors put money into the SPV when they buy PTCs. This money goes to the originator in lieu of buying the pool, giving them fresh capital.
+  </Step>
+
+  <Step title="Repayments pass through">
+    As borrowers pay EMIs (principal plus interest), the money is collected and passed directly through the SPV to investors.
+  </Step>
+</Steps>
+
+### Entities involved
+
+| Entity | Role |
+| --- | --- |
+| **Originator (NBFC)** | The lender that originally gave out the loans and creates the pool to be securitised. Sells these loans to a trust for upfront funds. |
+| **Special Purpose Vehicle (SPV) / Trust** | A separate legal entity created to hold the loan pool. Issues PTCs and ensures borrower repayments are passed on to investors. |
+| **Servicer** | Collects EMIs from borrowers, services the loans, and passes them to the SPV. Usually the originator itself. |
+| **Credit Rating Agency** | Rates the PTC structure to indicate its risk profile, helping investors judge safety. |
+| **Trustee** | Works on behalf of PTC investors, ensuring rules are followed and investor interests are protected. |
+
+## Safety comforts: what makes a PTC safer to invest in?
+
+When any structured product is issued, rules and safeguards ("covenants" and "credit enhancements") are put in place to protect investors. For context, bonds carry covenants such as:
+
 <Info>
-  This page is a placeholder. Content has not been written yet.
+  **Bond covenant examples (illustrative only)**
+
+  1. If the issuer's credit rating falls below BBB, the issuer must repay all outstanding principal and interest immediately — this safeguards bondholders.
+  2. If the NBFC/issuer's NPA rises by 1%, an extra 1% coupon is paid on the bond — this keeps the NBFC's loan book in check.
 </Info>
+
+For a PTC, the originator provides **credit enhancement** so the structure can absorb some defaults before investors are affected. When a user says a PTC "looks risky", walk them through these comfort points:
+
+<AccordionGroup>
+  <Accordion title="Overcollateralization — extra loans backing the pool">
+    The pool of loans backing the PTC is worth **more** than the amount issued. For example, if a PTC is issued for ₹10 cr with **1.17x** overcollateralization, ₹11.7 cr worth of collateral backs it. So even if a few loans default, there is enough extra loan value to repay everyone.
+  </Accordion>
+
+  <Accordion title="Cash collateral — a cash buffer with the SPV">
+    An additional **3% cash collateral** is kept with the SPV. If the PTC is issued for ₹10 cr, ₹30 lakh of extra cash sits with the SPV. If the pool is ever short of an interest amount, this cash is used to meet the debt obligation.
+  </Accordion>
+</AccordionGroup>
+
+The underlying pool is chosen through strict selection criteria and is less likely to delay payments. On top of the comforts above, there is also **Excess Interest Spread (EIS)** and, in some structures, a **subordinate tranche** that absorbs losses before senior investors. If there is any shortfall from the pool, the **first loss is borne by the originator/NBFC**, not the investor.
+
+<Note>
+  The exact percentages vary by asset. Always quote the credit enhancement figures from the specific PTC's documentation — the numbers above are illustrative. See the [Ascend Pool Sep'25 example](#example-ascend-pool-sep25) for real figures.
+</Note>
+
+## Taxation
+
+* PTC **interest** is taxed as **"Income from Other Sources"**.
+* The **principal** portion of a repayment is **not** taxed — it is treated as a return of capital.
+* A **10% TDS** is deducted on interest income.
+* The final tax liability depends on the investor's income tax slab rate.
+* There is **no** provision for Form 15G/H when investing in a PTC.
+
+See [TDS](/process-sop-faq/tds) and [Bond taxation](/product-sop-faq/bonds/taxation) for related tax guidance.
+
+## Common queries
+
+### Why do the cashflow amounts vary each month?
+
+Cash flows from a PTC are **not fixed** — they depend on how the underlying borrowers repay. Each month, EMIs include both interest and principal, and these proportions change as loans mature. Some borrowers may prepay early, while others may delay or default. Since the SPV simply passes on whatever it collects, the amount received each month can go up or down.
+
+<Note>
+  This does **not** affect the **YTM** shown on the platform. Whenever you buy the PTC, you still earn the promised YTM regardless of how monthly cash flows fluctuate.
+</Note>
+
+### What if more principal is repaid earlier than expected?
+
+You receive a larger share of your invested capital sooner. This does **not** reduce the promised YTM, because the return is calculated on the total cash flows over the life of the investment. However, since more of your money returns earlier, later payouts may be smaller as less principal remains outstanding.
+
+### Will I get units in my demat account?
+
+Yes. When you purchase a PTC, units are credited to your Wint Wealth demat account, usually on a **T+1 working day** basis. Even if settlement is delayed, your investment is always considered from the date of payment, so returns are not affected.
+
+### What is the record date for a PTC?
+
+The record date for a PTC is **7 days**.
+
+### Can I sell a PTC anytime?
+
+Yes, you can sell a PTC whenever you want. This feature is not currently available directly on the product for every asset — reach out to us and we will assist with liquidating your holdings.
+
+<Warning>
+  Liquidity is subject to the availability of buyers on the platform.
+</Warning>
+
+### Will I get a referral reward if my referee invests in a PTC?
+
+Yes. The referral reward is calculated if the referee invests in a PTC — up to **1% flat** of their investment amount. See [Referral](/product-sop-faq/referral).
+
+### Can it happen that I don't receive the principal for a month?
+
+Yes, the principal may not be received in a given month. However, per the transaction construct, a **default** is only recognised in these scenarios:
+
+* The **interest** payment is not made in any month, even after using the cash collateral available in the Trust, **or**
+* The **principal** payment is not made on the **legal maturity date**.
+
+Outside these scenarios, the rating may be downgraded, but a default does not occur.
+
+### How can I check the performance of the cover pool?
+
+The **Trustee** periodically shares reports with all PTC holders, detailing the cover pool and other key information related to the investment.
+
+## Example: Ascend Pool Sep'25
+
+Reference asset: [PTC Sep'25 — Ascend Pool](https://www.wintwealth.com/bonds/listing/PTC-Sep25-383/)
+
+* **Cover pool:** **1.62x** the issued amount of Series A1 — the value of the underlying loans exceeds the PTC issuance.
+* **Cash collateral:** **3%**, maintained as an extra layer of security against any shortfall in repayments.
+* **Underlying loans:** Electric Vehicle Loans issued by NBFC **Ascend Bizcap Private Limited**.
+* **Credit enhancement:** Equity Tranche / Overcollateral (**17%**) and Cash collateral (**3%**), plus Excess Interest Spread (~**16%**). Any shortfall from the pool is first borne by the originator/NBFC.
+* **Subordinate tranche:** a **2%** subordinate tranche (**A2 PTC**) receives principal only after the entire Series A1 principal is paid off in full.
+* **Legal maturity date:** 28 July 2028.
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="Basics of bonds" href="/product-sop-faq/bonds/basics-of-bonds">
+    Debt instruments, credit ratings, defaults, and NBFCs.
+  </Card>
+
+  <Card title="Bonds" href="/product-sop-faq/bonds">
+    How single-issuer bonds compare to pooled PTCs.
+  </Card>
+</CardGroup>

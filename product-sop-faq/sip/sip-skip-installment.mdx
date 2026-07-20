@@ -1,6 +1,62 @@
 ---
 title: "SIP Skip installment"
-description: "SIP Skip installment — CX wiki reference."
+description: "Skipping an upcoming SIP instalment from the app and the skip window rules."
 ---
 
-\
+The **Skip Instalment** feature lets a user skip upcoming instalments without cancelling the entire SIP. The SIP continues, and the user is not charged for the skipped instalment.
+
+## Can I skip my upcoming SIP order?
+
+Users can manage their SIP directly from the Wint app. The **Skip Instalment** feature allows skipping upcoming instalments without cancelling the whole SIP.
+
+<Note>
+  A user cannot cancel the **entire** SIP from the app — see [SIP Cancellation](/product-sop-faq/sip/sip-cancellation). They can only skip an instalment, which becomes available once the SIP order is initiated, 4–5 days before the deduction date.
+</Note>
+
+## How to skip an instalment
+
+<Steps>
+  <Step title="Open the SIP section">
+    Open the **SIP** section in the app.
+  </Step>
+
+  <Step title="Tap Skip Instalment">
+    Tap the **Skip Instalment** button for the relevant SIP.
+  </Step>
+
+  <Step title="Confirm">
+    Confirm on the bottom sheet. The instalment will be skipped.
+  </Step>
+</Steps>
+
+Users can choose whether or not to skip an instalment each month.
+
+## Skip window
+
+Skipping is only allowed from **T-5 up to T-2** (where T is the deduction date). It closes at T-1 because the autopay charge is raised one day before the instalment.
+
+| Day (example: SIP on 21st March) | Relative day | Skip allowed? |
+| --- | --- | --- |
+| 16th March | T-5 | ✅ Allowed |
+| 17th March | T-4 | ✅ Allowed |
+| 18th March | T-3 | ✅ Allowed |
+| 19th March | T-2 | ✅ Allowed |
+| 20th March | T-1 | ❌ Not allowed |
+| 21st March | T-0 | ❌ Not allowed |
+| 22nd March | T+1 | No option shown |
+
+<Info>
+  **Example** — For a SIP on 21st March, the user can skip from 16th March through 19th March. On 20th March (T-1) the option is no longer available. The next skip option becomes visible on **16th April**.
+</Info>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="SIP Cancellation" href="/product-sop-faq/sip/sip-cancellation">
+    Cancelling the entire SIP.
+  </Card>
+
+  <Card title="SIP Modification" href="/product-sop-faq/sip/sip-modification">
+    Changing the SIP amount or deduction date.
+  </Card>
+</CardGroup>

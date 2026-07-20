@@ -1,8 +1,50 @@
 ---
 title: "SIP Modification"
-description: "SIP Modification — placeholder page."
+description: "Modifying a SIP's amount or deduction date, including mandate limits."
 ---
 
-<Info>
-  This page is a placeholder. Content has not been written yet.
-</Info>
+SIP amount and date modifications are raised internally. Post the request in `#cx-internal-coordination` or `#cx-live` and tag the TLs.
+
+## Amount modification
+
+Raise the request with:
+
+* **User ID**
+* **SIP ID**
+* **Amount**
+
+<Warning>
+  Check the mandate type (UPI or eNACH) **before** raising an amount modification request.
+
+  * **UPI autopay** mandate supports only **₹10,000 per month** — it cannot be modified. To increase the SIP amount above ₹10,000, the mandate must be **eNACH**.
+  * **eNACH** amount modification supports **₹10,000 up to ₹2,90,000**, in increments of ₹10,000.
+</Warning>
+
+| Mandate type | Amount range | Modifiable? |
+| --- | --- | --- |
+| UPI autopay | ₹10,000/month only | No |
+| eNACH | ₹10,000 – ₹2,90,000 (increments of ₹10,000) | Yes |
+
+## Date modification
+
+Raise the request with:
+
+* **User ID**
+* **SIP ID**
+* **Day of month**
+
+<Note>
+  SIP date modification is allowed only between the **1st and 28th** of the month.
+</Note>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="SIP Skip installment" href="/product-sop-faq/sip/sip-skip-installment">
+    Skipping a single upcoming instalment.
+  </Card>
+
+  <Card title="SIP Cancellation" href="/product-sop-faq/sip/sip-cancellation">
+    Cancelling the entire SIP.
+  </Card>
+</CardGroup>

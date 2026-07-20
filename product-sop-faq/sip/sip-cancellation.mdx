@@ -1,8 +1,70 @@
 ---
 title: "SIP Cancellation"
-description: "SIP Cancellation — placeholder page."
+description: "Cancelling an entire SIP, the confirmation flow, and timing restrictions."
 ---
 
+A full SIP cannot be cancelled from the app — it is cancelled by an agent via the `#cx-api` workflow. Chat consent is now sufficient authorisation.
+
+## Can a user cancel the entire SIP via the platform?
+
+No. Users **cannot** cancel the entire SIP at once from the app. They can only [skip an instalment](/product-sop-faq/sip/sip-skip-installment) once the SIP order is initiated, 4–5 days before the deduction date.
+
+**Response to user:**
+
+> Instead of cancelling the entire SIP, you can skip your upcoming instalment using the Skip Instalment feature in the app. Your SIP will continue, and you won't be charged for this instalment. You can choose whether or not to skip an instalment each month. However, if you want to cancel the SIP entirely at once, please let us know.
+
+## Cancellation flow
+
 <Info>
-  This page is a placeholder. Content has not been written yet.
+  Consent provided over chat is now considered sufficient for SIP cancellation.
 </Info>
+
+<Steps>
+  <Step title="Verify the number">
+    Verify whether the request is being made from the **registered mobile number**.
+  </Step>
+
+  <Step title="Seek confirmation">
+    If yes, seek confirmation using this message:
+
+    > Sir/Ma'am, as I can see, there is a high-rated bond theme SIP of ₹10,000. Please confirm if you would like to cancel it.
+  </Step>
+
+  <Step title="Capture the confirmation">
+    Once the user confirms, take a screenshot of the chat confirmation and attach it in the SIP cancellation flow.
+  </Step>
+
+  <Step title="Run the workflow">
+    Go to the Slack `#cx-api` channel, type `/SIP Cancel`, run the workflow, and submit the request.
+  </Step>
+
+  <Step title="TL approval">
+    After TL approval, the client automatically receives an email confirmation of the cancellation.
+  </Step>
+</Steps>
+
+## Timing restrictions
+
+Cancellation depends on the autopay charge, which is raised one day before the instalment (T-1).
+
+| Scenario | Can the SIP order be cancelled? |
+| --- | --- |
+| More than 1 day before the instalment | Yes, via the cancellation flow above |
+| 1 day before the instalment (T-1) | No — the autopay charge is already raised |
+| After autopay is raised | No — NPCI may still deduct funds, so cancellation is not possible |
+
+<Warning>
+  Once the autopay request is raised, NPCI may still deduct funds. Order cancellation is not possible at this stage.
+</Warning>
+
+## Related
+
+<CardGroup cols={2}>
+  <Card title="SIP Skip installment" href="/product-sop-faq/sip/sip-skip-installment">
+    Skip a single instalment instead of cancelling.
+  </Card>
+
+  <Card title="SIP Modification" href="/product-sop-faq/sip/sip-modification">
+    Change the SIP amount or deduction date.
+  </Card>
+</CardGroup>

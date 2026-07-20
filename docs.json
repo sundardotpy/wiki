@@ -253,6 +253,7 @@
             "group": "CX",
             "pages": [
               "resources/cx",
+              "resources/cx/chat-tags",
               "resources/cx/language-sheet",
               "resources/cx/roaster"
             ]
