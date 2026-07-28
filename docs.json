@@ -173,7 +173,12 @@
           "product-sop-faq/fd",
           "product-sop-faq/form-121",
           "product-sop-faq/ivory",
-          "product-sop-faq/nsdl-demat",
+          {
+            "group": "NSDL Demat",
+            "pages": [
+              "product-sop-faq/why-wint-wealth-insist-on-opening-own-demat"
+            ]
+          },
           "product-sop-faq/pms",
           "product-sop-faq/ptc",
           {
